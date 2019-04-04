@@ -1,0 +1,15 @@
+<h1>Voici la liste des missions en cours</h1>
+
+<button><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
+
+<ul class="list-missions">
+  <% @missions.each do |mission| %>
+    <%= link_to mission_path(mission) do %>
+      <li>
+        Mission = <%= mission.name.capitalize %>
+      </li>
+        Nombre de point (<%= mission.point %>)
+    <% end %>
+  <% end %>
+</ul>
+

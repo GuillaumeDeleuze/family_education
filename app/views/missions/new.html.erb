@@ -1,0 +1,17 @@
+<h1>Missions</h1>
+<p>Selectionner les missions que doit faire votre enfant ou, ajoutez en une nouvelle</p>
+
+<form>
+  <div class="form-group">
+    <input type="text" class="form-control" id="missionInput" placeholder="Nouvelle mission">
+  </div>
+</form>
+
+<% suggested_missions = ["Sortir les poubelles", "Nourrir le chat", "Avoir 14 de moyenne en Anglais", "Ranger sa chambre", "Être gentil.le"] %>
+
+<h2>Suggestions</h2>
+  <% suggested_missions.each do |mission| %>
+  <ul>
+    <li><%= mission %></li>
+  </ul>
+  <% end %>

@@ -11,14 +11,12 @@ Rails.application.routes.draw do
   resources :families, only: [:new, :create] do
     resources :missions, only: [:index, :new, :create]
     resources :rewards, only: [:index, :new, :create]
-    resources :children, only: [:index, :show, :new, :create]
+    resources :children, only: [:index, :new, :create]
   end
-
+  resources :children, only: [:show]
   resources :missions, only: [:show, :edit, :update, :destroy]
   resources :rewards, only: [:show, :edit, :update, :destroy]
+  resources :partnairs, only: [:index, :show]
 
-  resources :rewards, only: [:index, :new, :create] do
-    resources :partnairs, only: [:index, :show]
-  end
 end
 
