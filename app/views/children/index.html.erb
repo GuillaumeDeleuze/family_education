@@ -1,0 +1,7 @@
+<h1>Mes p'tit bouts</h1>
+
+<button><%= link_to "Ajouter un membre à la famille", new_family_child_path(current_user.id) %></button>
+
+<% @childrens.each do |child| %>
+  <%= link_to child.email, child_path(child) %>
+<% end %>
