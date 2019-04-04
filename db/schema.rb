@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_103348) do
+ActiveRecord::Schema.define(version: 2019_04_04_103836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "children", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.bigint "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_children_on_email", unique: true
+    t.index ["family_id"], name: "index_children_on_family_id"
+    t.index ["reset_password_token"], name: "index_children_on_reset_password_token", unique: true
+  end
+
+  create_table "families", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_families_on_user_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "name"
+    t.integer "point"
+    t.date "start_at"
+    t.date "end_at"
+    t.bigint "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_missions_on_family_id"
+  end
+
+  create_table "partnairs", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "reward_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reward_id"], name: "index_partnairs_on_reward_id"
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.bigint "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_rewards_on_family_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +77,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_103348) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "families", "users"
+  add_foreign_key "missions", "families"
+  add_foreign_key "partnairs", "rewards"
+  add_foreign_key "rewards", "families"
 end
