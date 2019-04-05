@@ -16,10 +16,13 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new
     @family = Family.find(params[:family_id])
-    @mission.family = @family
+    @mission = current_user.family.missions.build(mission_params)
     if @mission.save
       puts "Yeah"
-      redirect_to family_missions_path(current_user.family.id)
+      redirect_to new_family_mission_path(current_user.family.id)
+    else
+      puts "fail"
+      render new
     end
   end
 

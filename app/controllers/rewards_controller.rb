@@ -15,8 +15,16 @@ class RewardsController < ApplicationController
 
   def create
     @reward = Reward.new
-    @reward.family = Family.find(params[:family_id])
-    @reward.save
+    @family = Family.find(params[:family_id])
+
+    @reward = current_user.family.rewards.build(rewards_params)
+    if @reward.save
+      puts "Yeah"
+      redirect_to new_family_reward_path(current_user.family.id)
+    else
+      puts "fail"
+      render new
+    end
   end
 
   def edit
