@@ -1,0 +1,29 @@
+<section class="flyout flyout-closed">
+  <header class="flyout-header">
+    <div class="d-flex justify-content-between">
+      <a class="flyout-close icon-link" href="#">
+          <%= image_tag("burger-menu.svg")  %>
+      </a>
+    </div>
+
+    <div class="flyout-header-content">
+        <span>Bienvenue sur Catch-Me</span>
+        <span class="float-left">Content de te revoir !</span>
+    </div>
+
+  </header>
+
+    <div class="flyout-links">
+
+      <%= link_to "Tableau de bord", users_path %>
+      <%= link_to "Se déconnecter",  destroy_user_session_path, method: :delete %>
+
+    </div>
+
+    <div class="flyout-bottom">
+      Made with love by Catch-Me Team
+    </div>
+
+  <div class="flyout-shadow flyout-close"></div>
+</section>
+
