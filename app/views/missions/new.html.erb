@@ -1,17 +1,39 @@
 <h1>Missions</h1>
 <p>Selectionner les missions que doit faire votre enfant ou, ajoutez en une nouvelle</p>
 
-<form>
-  <div class="form-group">
-    <input type="text" class="form-control" id="missionInput" placeholder="Nouvelle mission">
-  </div>
-</form>
+<div>
+  <h2>Mission à ajouter</h2>
+</div>
 
-<% suggested_missions = ["Sortir les poubelles", "Nourrir le chat", "Avoir 14 de moyenne en Anglais", "Ranger sa chambre", "Être gentil.le"] %>
+<div>
+  <h2>Ajouter une mission</h2>
+  <form>
+    <div class="form-group">
+      <input type="text" class="form-control" id="missionInput" placeholder="Nouvelle mission">
+    </div>
+  </form>
+</div>
+<% suggested_missions = ["Arrêter de fumer", "Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais", "Ranger sa chambre", "Être gentil.le"] %>
 
 <h2>Suggestions</h2>
   <% suggested_missions.each do |mission| %>
-  <ul>
-    <li><%= mission %></li>
-  </ul>
+    <ul>
+      <li><%= mission %></li>
+    </ul>
   <% end %>
+
+
+<div>Ajouter une mission</div>
+  <div>
+      <%= simple_form_for [@family, @mission] do |f| %>
+        <%= f.input :name, placeholder: 'Nom de la mission' %>
+        <%= f.input :point, collection: 1..20 %>
+        <%= f.input :start_at, as: :string, placeholder: 'jj/mm/yy' %>
+        <%= f.input :end_at, as: :string , placeholder: 'jj/mm/yy' %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+</div>
+
+
+
+<!-- name: , point: , start_at: , end_at:, family_id: -->

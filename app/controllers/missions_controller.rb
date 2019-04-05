@@ -15,8 +15,12 @@ class MissionsController < ApplicationController
 
   def create
     @mission = Mission.new
-    @mission.family = Family.find(params[:family_id])
-    @mission.save
+    @family = Family.find(params[:family_id])
+    @mission.family = @family
+    if @mission.save
+      puts "Yeah"
+      redirect_to family_missions_path(current_user.family.id)
+    end
   end
 
   def edit
