@@ -3,6 +3,7 @@ class MissionsController < ApplicationController
 
   def index
     @missions = Mission.where(family: current_user.family)
+    @missions = policy_scope(current_user.family.missions)
   end
 
   def show
@@ -11,14 +12,16 @@ class MissionsController < ApplicationController
   def new
     @family = Family.find(params[:family_id])
     @mission = Mission.new
+    authorize @mission
   end
 
   def create
     @mission = Mission.new
     @family = Family.find(params[:family_id])
     @mission = current_user.family.missions.build(mission_params)
+    authorize @mission
     if @mission.save
-      puts "Yeah"
+      flash[:alert] = "Votre mission a bien été créée"
       redirect_to new_family_mission_path(current_user.family.id)
     else
       puts "fail"
@@ -42,6 +45,7 @@ class MissionsController < ApplicationController
 
   def set_mission
     @mission = Mission.find(params[:id])
+    authorize @mission
   end
 
   def mission_params

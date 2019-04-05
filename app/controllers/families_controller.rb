@@ -1,12 +1,13 @@
-# class FamiliesController < ApplicationController
-#   def new
-#     @user = User.find(params[:user_id])
-#     @family = Family.new
-#   end
+class FamiliesController < ApplicationController
+  def new
+    @family = Family.new
+  end
 
-#   def create
-#     @family = Family.new
-#     @family.user = User.find(params[:user_id])
-#     @family.save
-#   end
-# end
+  def create
+    @family = Family.new
+    @family.user = User.find(current_user.id)
+    if @family.save
+      redirect_to family_children_path(@family)
+    end
+  end
+end
