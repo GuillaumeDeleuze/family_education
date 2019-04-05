@@ -3,6 +3,7 @@ class RewardsController < ApplicationController
 
   def index
     @rewards = Reward.where(family: current_user.family)
+    @rewards = policy_scope(current_user.family.rewards)
   end
 
   def show
@@ -11,13 +12,14 @@ class RewardsController < ApplicationController
   def new
     @family = Family.find(params[:family_id])
     @reward = Reward.new
+    authorize @reward
   end
 
   def create
     @reward = Reward.new
     @family = Family.find(params[:family_id])
-
     @reward = current_user.family.rewards.build(rewards_params)
+    authorize @reward
     if @reward.save
       puts "Yeah"
       redirect_to new_family_reward_path(current_user.family.id)
@@ -43,6 +45,7 @@ class RewardsController < ApplicationController
 
   def set_reward
     @reward = Reward.find(params[:id])
+    authorize @reward
   end
 
   def rewards_params
