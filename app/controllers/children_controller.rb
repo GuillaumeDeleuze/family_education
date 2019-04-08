@@ -1,20 +1,21 @@
 class ChildrenController < ApplicationController
   def index
-    @childrens = policy_scope(Child.where(family: current_user.family))
+    policy_scope(current_user.family.user)
+    @children = current_user.family.user.where(child: true)
   end
 
   def show
-    @child = Child.find(params[:id])
+    @child = User.find(params[:id])
     authorize @child
   end
 
   def new
-    @child = Child.new
+    @child = User.new
     authorize @child
   end
 
   def create
-    @child = Child.new(params[:child])
+    @child = User.new(params[:child])
     @child.save
     authorize @child
     redirect_to childrens_path

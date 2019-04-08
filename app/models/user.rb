@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_one :family
-  has_many :childrens, through: :family
+  belongs_to :family
+  has_many :rewards
+  has_many :missions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

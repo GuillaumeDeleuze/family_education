@@ -1,15 +1,42 @@
-<h1>Voici la liste des missions en cours</h1>
+<% if current_user.child? %>
+<!-- VUE ENFANT -->
 
-<button><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
+  <h1>Mes missions</h1>
 
-<ul class="list-missions">
-  <% @missions.each do |mission| %>
-    <%= link_to mission_path(mission) do %>
-      <li>
-        Mission = <%= mission.name.capitalize %>
-      </li>
-        Nombre de point (<%= mission.point %>)
+  <ul class="list-missions">
+    <% @current_user.missions.each do |mission| %>
+      <p><%= mission.user.name %></p>
+        <%= link_to mission_path(mission) do %>
+          <li>
+            Mission = <%= mission.name.capitalize %>
+          </li>
+            Nombre de point (<%= mission.point %>)
+        <% end %>
+        <p>---------------------------------------------------------------------</p>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
+
+
+
+
+<% else %>
+<!-- VUE PARENT -->
+  <h1>Voici la liste des missions en cours</h1>
+
+  <button><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
+
+  <ul class="list-missions">
+    <% @family_missions.each do |mission| %>
+      <p><%= mission.user.name %></p>
+        <%= link_to mission_path(mission) do %>
+          <li>
+            Mission = <%= mission.name.capitalize %>
+          </li>
+            Nombre de point (<%= mission.point %>)
+        <% end %>
+      <p>---------------------------------------------------------------------</p>
+    <% end %>
+  </ul>
+
+<% end %>

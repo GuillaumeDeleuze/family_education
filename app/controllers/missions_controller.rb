@@ -2,8 +2,10 @@ class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
 
   def index
+    @family = User.where(family: current_user.family)
+    @family_missions = Mission.where(user: @family)
     @missions = Mission.where(family: current_user.family)
-    @missions = policy_scope(current_user.family.missions)
+    @missions = policy_scope(current_user.missions)
   end
 
   def show
@@ -18,7 +20,7 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new
     @family = Family.find(params[:family_id])
-    @mission = current_user.family.missions.build(mission_params)
+    @mission = current_user.missions.build(mission_params)
     authorize @mission
     if @mission.save
       flash[:alert] = "Votre mission a bien été créée"

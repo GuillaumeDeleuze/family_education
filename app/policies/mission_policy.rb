@@ -10,7 +10,7 @@ class MissionPolicy < ApplicationPolicy
   end
 
   def show?
-    record.family.user_id == user.id
+    record.user.family == user.family
   end
 
   def create?

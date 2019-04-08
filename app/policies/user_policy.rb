@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def index?
     true
   end
+
+  def show?
+    record.family == user.family
+  end
 end
