@@ -2,8 +2,10 @@ class RewardsController < ApplicationController
   before_action :set_reward, only: [:show, :edit, :update, :destroy]
 
   def index
+    @family = User.where(family: current_user.family)
+    @family_rewards = Reward.where(user: @family)
     @rewards = Reward.where(family: current_user.family)
-    @rewards = policy_scope(current_user.family.rewards)
+    @rewards = policy_scope(current_user.rewards)
   end
 
   def show

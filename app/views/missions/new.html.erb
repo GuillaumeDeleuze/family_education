@@ -8,6 +8,7 @@
     <%= simple_form_for [@family, @mission] do |f| %>
       <%= f.input :name, placeholder: 'Nom de la mission' %>
       <%= f.input :point, collection: 1..20 %>
+      <%= f.association :user %>
       <%= f.input :start_at, as: :string, placeholder: 'jj/mm/yy' %>
       <%= f.input :end_at, as: :string , placeholder: 'jj/mm/yy' %>
     <%= f.button :submit, class: 'btn btn-primary' %>

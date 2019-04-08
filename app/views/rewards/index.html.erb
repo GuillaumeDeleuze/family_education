@@ -1,18 +1,37 @@
-<h1>Voici la liste des récompenses</h1>
+<% if current_user.child? %>
+<!-- VUE ENFANT -->
 
-<button><%= link_to "Ajouter une récompenses",  new_family_reward_path(@current_user.id) %></button>
+<h1>Mes récompenses</h1>
 
-<ul class="list-rewards">
-  <% @rewards.each do |reward| %>
-    <%= link_to reward_path(reward) do %>
-      <li>
-        reward = <%= reward.name.capitalize %>
-      </li>
-        <p>Nombre de point requis <%= reward.price %></p>
+  <ul class="list-rewards">
+    <% @current_user.rewards.each do |reward| %>
+      <%= link_to reward_path(reward) do %>
+        <li>
+          reward = <%= reward.name.capitalize %>
+        </li>
+          <p>Nombre de point requis <%= reward.price %></p>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
+<% else %>
+<!-- VUE PARENT -->
+
+  <h1>Voici la liste des récompenses</h1>
+
+  <button><%= link_to "Ajouter une récompenses",  new_family_reward_path(@current_user.id) %></button>
+
+  <ul class="list-rewards">
+    <% @family_rewards.each do |reward| %>
+      <%= link_to reward_path(reward) do %>
+        <li>
+          reward = <%= reward.name.capitalize %>
+        </li>
+          <p>Nombre de point requis <%= reward.price %></p>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
 
 
 <!-- Afficher liste des récompenses avec le prix (avec lien vers le détail d'une récompense?)

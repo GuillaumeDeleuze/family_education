@@ -1,10 +1,36 @@
 <h1>Tableau de bord</h1>
+
+<!-- PAGE ENFANT -->
+<% if current_user.child? %>
+
+  <ul>
+    <li>
+      <%= link_to 'Mes missions', family_missions_path(current_user.family) %>
+    </li>
+    <li>
+      <%= link_to 'Mes récompenses', family_rewards_path(current_user.family)%>
+    </li>
+  </ul>
+
+
+<!-- PAGE PARENT -->
 <!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
 
+<% else %>
 
- <ul>
-  <li> <%= link_to 'Mes enfants', family_children_path(current_user) %> </li>
-  <li> <%= link_to 'Les missions', family_missions_path(current_user)%> </li>
-  <li> <%= link_to 'Les récompenses', family_rewards_path(current_user)%> </li>
-  <li> <%= link_to 'Nos partenaires', partnairs_path %> </li>
-</ul>
+  <ul>
+    <li>
+      <%= link_to 'Mes enfants', family_children_path(current_user.family) %>
+    </li>
+    <li>
+      <%= link_to 'Les missions', family_missions_path(current_user.family)%>
+    </li>
+    <li>
+      <%= link_to 'Les récompenses', family_rewards_path(current_user.family)%>
+    </li>
+    <li>
+      <%= link_to 'Nos partenaires', partnairs_path %>
+    </li>
+  </ul>
+
+<% end %>

@@ -10,7 +10,7 @@ class ChildPolicy < ApplicationPolicy
   end
 
   def show?
-    record.family.user_id == user.id
+    record.family == user.family
   end
 
   def create?
