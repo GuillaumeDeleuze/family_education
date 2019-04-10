@@ -1,7 +1,40 @@
 <h1><%= @mission.name.upcase %></h1>
-<p>Début de la mission : <%= @mission.start_at %></p>
-<p>Fin de la mission prévue le : <%= @mission.end_at %></p>
-<p>Nombres de points rapportés : <%= @mission.point %></p>
 
-<!-- Indiquer à quel enfant appartient la mission
-Savoir si elle a été complétée ou non -->
+<% if current_user.child? %>
+<!-- VUE ENFANT -->
+  <p>Début de la mission le : <%= @mission.start_at %></p>
+  <p><%= "Tu as jusqu'au #{@mission.end_at} pour finir ta mission" %></p>
+  <p><%= "Si tu réussi, tu pourras obtenir #{@mission.point} points !" %></p>
+
+  <% if @mission.to_do?  %>
+    <%= simple_form_for @mission do |f| %>
+      <%= f.hidden_field :status, :value => 'pending' %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+  <% elsif @mission.pending? %>
+    <p><%= "En cours de vérification par le Big Boss" %></p>
+  <% else %>
+    <p><%= "Bravo bien joué !" %></p>
+  <% end %>
+
+<% else %>
+<!-- VUE PARENT -->
+  <p><%= "Assigné à #{@mission.user.name} pour le #{@mission.start_at}" %></p>
+  <p>Fin de la mission prévue le : <%= @mission.end_at %></p>
+  <p>Nombres de points rapportés : <%= @mission.point %></p>
+  <p><% if @mission.to_do? %>
+      <%= "Mission toujours en cours" %>
+    <% elsif @mission.pending? %>
+      <%= "Vérifie que la mission a été correctement effectuée" %>
+      <%= simple_form_for @mission do |f| %>
+        <%= f.input :status, collection: [['Mission incomplète', 'to_do'], ['Mission rondement menée', 'done']] %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <%= "Mission réalisé avec Brio on peut être fière" %>
+    <% end %>
+  </p>
+<% end %>
+
+
+<!-- 3 états différents : en cours(to_do[0])  / a valider(pending[1]) / valider(done[2]) -->

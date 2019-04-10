@@ -4,22 +4,16 @@
   <h1>Mes missions</h1>
 
   <ul class="list-missions">
-    <% @current_user.missions.each do |mission| %>
-      <p><%= mission.user.name %></p>
+    <% @current_user.missions.order(:status).each do |mission| %>
         <%= link_to mission_path(mission) do %>
           <li>
-            Mission = <%= mission.name.capitalize %>
+            <%= mission.name.capitalize %>
           </li>
-            Nombre de point (<%= mission.point %>)
+            Nombre de points rapportés : <%= mission.point %>
         <% end %>
         <p>---------------------------------------------------------------------</p>
     <% end %>
   </ul>
-
-
-
-
-
 <% else %>
 <!-- VUE PARENT -->
   <h1>Voici la liste des missions en cours</h1>
@@ -27,7 +21,9 @@
   <button><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
 
   <ul class="list-missions">
-    <% @family_missions.each do |mission| %>
+    <% @family_missions.order('status DESC').each do |mission| %>
+    <% if mission.status == 'done' %>
+    <% else %>
       <p><%= mission.user.name %></p>
         <%= link_to mission_path(mission) do %>
           <li>
@@ -36,7 +32,13 @@
             Nombre de point (<%= mission.point %>)
         <% end %>
       <p>---------------------------------------------------------------------</p>
+      <% end %>
     <% end %>
   </ul>
-
 <% end %>
+
+
+<!-- Réaliser ( + tard mettre boutton pour afficher mission faite ou non) -->
+
+
+

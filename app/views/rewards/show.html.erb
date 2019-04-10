@@ -1,3 +1,26 @@
-<h1>Show Rewards</h1>
+<h1><%= @reward.name %></h1>
+
+<!-- VUE ENFANT -->
+<% if current_user.child? %>
+  <p>Nombre de points requis : <%= @reward.price %></p>
+    <% if current_user.point >= @reward.price && @reward.done == false %>
+      <%= "JE LE VEUX !" %>
+      <%= simple_form_for @reward do |f| %>
+        <%= f.hidden_field :done, :value => true %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    <% elsif @reward.done %>
+      <%= "Hep hep tu as déjà pris tout ça petit garnement" %>
+    <% else %>
+      <%= "Waouhhh calm down il te manque encore #{@reward.price - current_user.point} points" %>
+    <% end %>
+
+<!-- VUE PARENT -->
+<% else %>
+  <%= "Hey:)" %>
 <!-- affiche la récompense
 Si code caché le dévoile si choisi de payer -->
+
+
+
+<% end %>

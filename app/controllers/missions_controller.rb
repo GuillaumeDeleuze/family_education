@@ -13,18 +13,18 @@ class MissionsController < ApplicationController
 
   def new
     @family = Family.find(params[:family_id])
+    @children = User.where(family: current_user.family).where(child: true)
     @mission = Mission.new
     authorize @mission
   end
 
   def create
-    @mission = Mission.new
+    @mission = Mission.new(mission_params)
     @family = Family.find(params[:family_id])
-    @mission = current_user.missions.build(mission_params)
     authorize @mission
     if @mission.save
-      flash[:alert] = "Votre mission a bien été créée"
-      redirect_to new_family_mission_path(current_user.family.id)
+      redirect_to family_missions_path(current_user.family.id)
+      flash[:notice] = "Votre mission a bien été créée"
     else
       puts "fail"
       render new
@@ -35,8 +35,22 @@ class MissionsController < ApplicationController
   end
 
   def update
-    @mission.update(params[:id])
     @mission.update(mission_params)
+    @user = @mission.user
+    if current_user.child?
+      redirect_to family_missions_path(current_user.family.id)
+      flash[:notice] = "Le grand chef va bientôt venir vérifier tout ça"
+    else
+      if @mission.done?
+        @mission.user.point += @mission.point
+        @user.save
+        redirect_to family_missions_path(current_user.family.id)
+        flash[:notice] = "Votre sentence est envoyée"
+      else
+        redirect_to family_missions_path(current_user.family.id)
+        flash[:notice] = "Votre sentence est envoyée"
+      end
+    end
   end
 
   def destroy
@@ -51,6 +65,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:family_id, :start_at, :end_at, :point, :name)
+    params.require(:mission).permit(:user_id, :start_at, :end_at, :point, :name, :status)
   end
 end
