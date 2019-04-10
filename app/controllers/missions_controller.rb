@@ -24,8 +24,7 @@ class MissionsController < ApplicationController
     authorize @mission
     if @mission.save
       redirect_to family_missions_path(current_user.family.id)
-      flash[:alert] = "Votre mission a bien été créée"
-
+      flash[:notice] = "Votre mission a bien été créée"
     else
       puts "fail"
       render new
@@ -36,8 +35,22 @@ class MissionsController < ApplicationController
   end
 
   def update
-    # @mission.update(params[:mission])
     @mission.update(mission_params)
+    @user = @mission.user
+    if current_user.child?
+      redirect_to family_missions_path(current_user.family.id)
+      flash[:notice] = "Le grand chef va bientôt venir vérifier tout ça"
+    else
+      if @mission.done?
+        @mission.user.point += @mission.point
+        @user.save
+        redirect_to family_missions_path(current_user.family.id)
+        flash[:notice] = "Votre sentence est envoyée"
+      else
+        redirect_to family_missions_path(current_user.family.id)
+        flash[:notice] = "Votre sentence est envoyée"
+      end
+    end
   end
 
   def destroy

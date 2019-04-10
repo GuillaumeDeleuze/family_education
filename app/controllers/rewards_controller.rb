@@ -35,8 +35,17 @@ class RewardsController < ApplicationController
   end
 
   def update
-    @reward.update(params[:id])
-    @reward.update(reward_params)
+    @reward.update(rewards_params)
+    @user = @reward.user
+    if @reward.done?
+      @user.point -= @reward.price
+      @user.save
+      redirect_to family_rewards_path(current_user.family.id)
+      flash[:notice] = "C'est parti pour profiter un MAXXXX"
+    else
+      redirect_to family_rewards_path(current_user.family.id)
+      flash[:notice] = "Il semble que quelquechose se soit mal passé... Réessaye"
+    end
   end
 
   def destroy
@@ -51,6 +60,6 @@ class RewardsController < ApplicationController
   end
 
   def rewards_params
-    params.require(:reward).permit(:user_id, :name, :price)
+    params.require(:reward).permit(:user_id, :name, :price, :done)
   end
 end

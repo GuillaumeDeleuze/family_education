@@ -3,7 +3,6 @@
 
 <h1>Mes récompenses</h1>
 <h2>Mon nombre de points disponible <%= @current_user.point %></h2>
-
   <ul class="list-rewards">
     <% @current_user.rewards.each do |reward| %>
       <%= link_to reward_path(reward) do %>
