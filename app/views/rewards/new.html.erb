@@ -4,6 +4,7 @@
     <%= simple_form_for [@family, @reward] do |f| %>
       <%= f.input :name, placeholder: 'Nom de la récompense' %>
       <%= f.input :price, collection: 1..50 %>
+      <%= f.association :user, collection: @children %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>

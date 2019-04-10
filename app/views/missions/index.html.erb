@@ -5,20 +5,15 @@
 
   <ul class="list-missions">
     <% @current_user.missions.each do |mission| %>
-      <p><%= mission.user.name %></p>
         <%= link_to mission_path(mission) do %>
           <li>
-            Mission = <%= mission.name.capitalize %>
+            <%= mission.name.capitalize %>
           </li>
-            Nombre de point (<%= mission.point %>)
+            Nombre de points rapportés : <%= mission.point %>
         <% end %>
         <p>---------------------------------------------------------------------</p>
     <% end %>
   </ul>
-
-
-
-
 
 <% else %>
 <!-- VUE PARENT -->

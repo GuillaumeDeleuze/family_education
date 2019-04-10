@@ -13,6 +13,10 @@ class MissionPolicy < ApplicationPolicy
     record.user.family == user.family
   end
 
+  def update?
+    true
+  end
+
   def create?
     true
   end
