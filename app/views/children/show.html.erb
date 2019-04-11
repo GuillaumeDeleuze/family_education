@@ -1,9 +1,15 @@
-<h1><%= @child.name %></h1>
+<h1><%= @child.name.capitalize %></h1>
 
-
-<%= @child.point %>
-<!--
-Récompenses acquises
-Ajouter une mission
-Ajouter une récompense
--->
+<h2>Les missions attribuées</h2>
+  <ul>
+    <% @child.missions.each do |mission| %>
+      <li><%= mission.name.capitalize %></li>
+      <p><%= "Jusqu'au #{mission.end_at}" %></p>
+    <% end %>
+  </ul>
+<h2>Les récompenses attribuées</h2>
+  <ul>
+    <% @child.rewards.each do |reward| %>
+      <li><%= reward.name.capitalize %></li>
+    <% end %>
+  </ul>
