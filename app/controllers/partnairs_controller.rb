@@ -1,6 +1,6 @@
 class PartnairsController < ApplicationController
   def index
-    @partnairs = Partnair.all
+    @partnairs = policy_scope(Partnair)
   end
 
   def show

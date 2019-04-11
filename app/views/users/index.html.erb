@@ -17,7 +17,6 @@
 <!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
 
 <% else %>
-
   <ul>
     <li>
       <%= link_to 'Mes enfants', family_children_path(current_user.family) %>
@@ -25,6 +24,10 @@
     <li>
       <%= link_to 'Les missions', family_missions_path(current_user.family)%>
     </li>
+      <!-- A placer qlq part sur le carré Mission -->
+    <% if Mission.where(:status => 'pending').count > 0 %>
+      Nombre de mission à valider <%= Mission.where(:status => 'pending').count %>
+    <% end %>
     <li>
       <%= link_to 'Les récompenses', family_rewards_path(current_user.family)%>
     </li>

@@ -1,1 +1,5 @@
-<h1>Partnair index</h1>
+<h1>La liste de nos partenaires</h1>
+<% @partnairs.each do |partnair| %>
+  <h2><%= partnair.name %></h2>
+  <p><%= partnair.description %></p>
+<% end %>

@@ -4,39 +4,78 @@
   <h1>Mes missions</h1>
 
   <ul class="list-missions">
-    <% @current_user.missions.order(:status).each do |mission| %>
+    <h2>A faire</h2>
+    <% @current_user.missions.each do |mission| %>
+      <% if mission.status == 'to_do' %>
         <%= link_to mission_path(mission) do %>
           <li>
             <%= mission.name.capitalize %>
           </li>
-            Nombre de points rapportés : <%= mission.point %>
+            Nombre de points rapportés par la mission : <%= mission.point %>
         <% end %>
-        <p>---------------------------------------------------------------------</p>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <ul class="list-missions">
+    <h2>En cours de validation</h2>
+    <% @current_user.missions.each do |mission| %>
+      <% if mission.status == 'pending' %>
+        <%= link_to mission_path(mission) do %>
+          <li>
+            <%= mission.name.capitalize %>
+          </li>
+            Nombre de points rapportés par la mission : <%= mission.point %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <ul class="list-missions">
+    <h2>Ancienne mission</h2>
+    <% @current_user.missions.each do |mission| %>
+      <% if mission.status == 'done' %>
+        <%= link_to mission_path(mission) do %>
+          <li>
+            <%= mission.name.capitalize %>
+          </li>
+            Nombre de points rapportés par la mission : <%= mission.point %>
+        <% end %>
+      <% end %>
     <% end %>
   </ul>
 <% else %>
 <!-- VUE PARENT -->
   <h1>Voici la liste des missions en cours</h1>
 
-  <button><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
+  <button type="button" class="btn btn-success"><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
 
   <ul class="list-missions">
-    <% @family_missions.order('status DESC').each do |mission| %>
-    <% if mission.status == 'done' %>
-    <% else %>
-      <p><%= mission.user.name %></p>
+    <h2>A valider</h2>
+    <% @family_missions.each do |mission| %>
+      <% if mission.status == 'pending' %>
         <%= link_to mission_path(mission) do %>
           <li>
-            Mission = <%= mission.name.capitalize %>
+            <%= "#{mission.name.capitalize} (#{mission.user.name})"%>
           </li>
-            Nombre de point (<%= mission.point %>)
         <% end %>
-      <p>---------------------------------------------------------------------</p>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <ul class="list-missions">
+    <h2>En cours</h2>
+    <% @family_missions.each do |mission| %>
+      <% if mission.status == 'to_do' %>
+        <%= link_to mission_path(mission) do %>
+          <li>
+            <%= "#{mission.name.capitalize} (#{mission.user.name})"%>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
   </ul>
 <% end %>
-
 
 <!-- Réaliser ( + tard mettre boutton pour afficher mission faite ou non) -->
 
