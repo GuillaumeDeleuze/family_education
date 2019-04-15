@@ -13,8 +13,8 @@ class MissionsController < ApplicationController
 
   def new
     @family = Family.find(params[:family_id])
-    @children = User.where(family: current_user.family).where(child: true)
     @mission = Mission.new
+    @children = User.where(family: current_user.family).where(child: true)
     authorize @mission
   end
 
@@ -32,6 +32,7 @@ class MissionsController < ApplicationController
   end
 
   def edit
+    @children = User.where(family: current_user.family).where(child: true)
   end
 
   def update

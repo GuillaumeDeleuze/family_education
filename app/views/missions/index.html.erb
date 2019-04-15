@@ -84,10 +84,10 @@
   </div>
   <% else %>
 
-  <!-- VUE PARENT -->
+<!-- VUE PARENT -->
   <h1>Voici la liste des missions en cours</h1>
 
-  <button type="button" class="btn btn-success"><%= link_to "Ajouter une mission", new_family_mission_path(current_user.id) %></button>
+  <button type="button" class="btn btn-success"><%= link_to "Ajouter une mission", new_family_mission_path(current_user.family.id) %></button>
 
 
 
@@ -134,6 +134,8 @@
                     <%= "#{mission.name.capitalize} (#{mission.user.name})"%>
                   </li>
                 <% end %>
+                <%= link_to "edit", edit_mission_path(mission) %>
+                <%= button_to "delete", mission, :method => :delete %>
               <% end %>
             <% end %>
           </ul>

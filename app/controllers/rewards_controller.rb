@@ -32,6 +32,7 @@ class RewardsController < ApplicationController
   end
 
   def edit
+    @children = User.where(family: current_user.family).where(child: true)
   end
 
   def update
