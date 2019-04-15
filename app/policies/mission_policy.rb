@@ -20,4 +20,8 @@ class MissionPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def destroy?
+    true
+  end
 end
