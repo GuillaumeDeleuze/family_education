@@ -1,1 +1,21 @@
-<h1>New children</h1>
+<h1>Ajouter un enfant</h1>
+<%= simple_form_for @child do |f| %>
+    <%= f.input :name, placeholder: 'Son petit nom' %>
+    <%= f.input :birth_date, placeholder: 'jj/mm/aa' %>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.hidden_field :family_id, :value => current_user.family_id %>
+    <%= f.hidden_field :child, :value => true %>
+    <%= f.hidden_field :point, :value => 0 %>
+
+    <%= f.button :submit, "Sign up" %>
+<% end %>

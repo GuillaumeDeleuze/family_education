@@ -1,4 +1,6 @@
 class ChildrenController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     policy_scope(current_user.family.user)
     @children = current_user.family.user.where(child: true)
@@ -18,7 +20,7 @@ class ChildrenController < ApplicationController
     @child = User.new(params[:child])
     @child.save
     authorize @child
-    redirect_to childrens_path
+    redirect_to users_path
   end
 
   private
