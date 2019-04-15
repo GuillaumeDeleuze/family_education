@@ -12,4 +12,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     record.family == user.family
   end
+
+  def create?
+    true
+  end
 end
