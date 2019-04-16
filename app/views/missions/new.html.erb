@@ -6,23 +6,25 @@
   <h2>Ajouter une mission</h2>
   <div>
     <%= simple_form_for [@family, @mission] do |f| %>
-      <%= f.input :name, placeholder: 'Nom de la mission' %>
+      <%= f.input :name, placeholder: 'Nom de la mission', :input_html => { :class => "stext"} %>
       <%= f.input :point, collection: 1..20 %>
       <%= f.association :user, collection: @children %>
-      <%= f.input :start_at, as: :string, placeholder: 'jj/mm/yy' %>
-      <%= f.input :end_at, as: :string , placeholder: 'jj/mm/yy' %>
+      <%= f.input :start_at, as: :date, placeholder: 'jj/mm/yy' %>
+      <%= f.input :end_at, as: :date , placeholder: 'jj/mm/yy' %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>
 
 </div>
-<% suggested_missions = ["Arrêter de fumer", "Faire un Top 1","Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais hors de Gaulle", "Ranger sa chambre", "Être gentil.le"] %>
+<% suggestions = ["Arrêter de fumer", "Faire un Top 1","Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais hors de Gaulle", "Ranger sa chambre", "Être gentil.le"] %>
 
 <h2>Suggestions</h2>
-  <% suggested_missions.each do |mission| %>
-    <ul>
-      <li><%= mission %></li>
+  <% suggestions.each do |suggestion| %>
+    <div class="suggestion">
+      <ul>
+        <li><%= suggestion %></li>
     </ul>
+  </div>
   <% end %>
 
 
