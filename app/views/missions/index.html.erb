@@ -100,7 +100,11 @@
           </a>
         </h2>
       </div>
-      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <% if Mission.where(:status => 'pending').count == 0 %>
+        <div id="collapseOne" class="collapse hide" data-parent="#accordion">
+      <% else %>
+        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <% end %>
         <div class="card-body">
           <ul class="list-missions">
             <% @family_missions.each do |mission| %>
@@ -124,7 +128,11 @@
           </a>
         </h2>
       </div>
-      <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
+      <% if Mission.where(:status => 'pending').count == 0 %>
+        <div id="collapseTwo" class="collapse show" data-parent="#accordion">
+      <% else %>
+        <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
+      <% end %>
         <div class="card-body">
           <ul class="list-missions">
             <% @family_missions.each do |mission| %>

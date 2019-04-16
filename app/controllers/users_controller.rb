@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def index
     @users = policy_scope(User)
+    @family = User.where(family: current_user.family)
+    @family_missions = Mission.where(user: @family)
+    @family_rewards = Reward.where(user: @family)
   end
 
   def new

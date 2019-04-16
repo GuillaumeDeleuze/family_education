@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  # devise_for :users
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
 
+  authenticated :user do
+    root 'users#index', as: :authenticated_root
+  end
 
   root to: 'pages#home'
 
@@ -16,10 +18,11 @@ Rails.application.routes.draw do
     resources :children, only: [:index, :new, :create]
 
   end
+  resources :families, only: [:index, :show]
   resources :children, only: [:show]
   resources :missions, only: [:show, :edit, :update, :destroy]
   resources :rewards, only: [:show, :edit, :update, :destroy]
-  resources :partnairs, only: [:index, :show]
+  resources :partnairs, only: [:index, :show, :edit, :update, :destroy, :new, :create]
 
 end
 

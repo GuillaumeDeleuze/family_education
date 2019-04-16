@@ -14,6 +14,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    if user.admin?
+      true
+    elsif user
+      true
+    else
+      false
+    end
   end
 end

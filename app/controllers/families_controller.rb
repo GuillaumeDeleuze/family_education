@@ -2,6 +2,15 @@ class FamiliesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
   skip_after_action :verify_authorized
 
+  def index
+    @families = Family.all
+  end
+
+  def show
+    @family = Family.find(params[:id])
+    authorize @family
+  end
+
   def new
     @family = Family.new
   end

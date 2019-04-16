@@ -33,6 +33,7 @@
       <% if current_user.child == false %>
         <%= link_to 'Les partenaires', partnairs_path %>
       <% end %>
+      <%= link_to "Mon compte", edit_user_registration_path %>
       <%= link_to "Se déconnecter",  destroy_user_session_path, method: :delete %>
 
     </div>
