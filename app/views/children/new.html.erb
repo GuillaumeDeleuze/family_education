@@ -1,7 +1,9 @@
 <h1>Ajouter un enfant</h1>
 <%= simple_form_for @child do |f| %>
-    <%= f.input :name, placeholder: 'Son petit nom' %>
-    <%= f.input :birth_date, placeholder: 'jj/mm/aa' %>
+    <%= f.input :name, label: 'Nom', placeholder: 'Son petit nom' %>
+    <%= f.input :birth_date, label: 'Date de naissance', as: :date,
+                start_year: Date.today.year - 25,
+                end_year: Date.today.year - 7 %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,

@@ -1,16 +1,16 @@
 <h1>Missions</h1>
-<p>Selectionner les missions que doit faire votre enfant ou, ajoutez en une nouvelle</p>
+<p>Selectionner une mission que doit faire votre enfant ou, ajoutez en une nouvelle</p>
 
 
 <div>
   <h2>Ajouter une mission</h2>
   <div>
     <%= simple_form_for [@family, @mission] do |f| %>
-      <%= f.input :name, placeholder: 'Nom de la mission', :input_html => { :class => "stext"} %>
-      <%= f.input :point, collection: 1..20 %>
-      <%= f.association :user, collection: @children %>
-      <%= f.input :start_at, as: :date, placeholder: 'jj/mm/yy' %>
-      <%= f.input :end_at, as: :date , placeholder: 'jj/mm/yy' %>
+      <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
+      <%= f.input :point, label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false %>
+      <%= f.association :user, label: 'Quel enfant?', collection: @children, include_blank: false %>
+      <%= f.input :start_at, label: 'Début de la mission (facultatif)', as: :date, start_year: Date.today.year %>
+      <%= f.input :end_at, label: 'Fin de la mission (facultatif)', as: :date , start_year: Date.today.year %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>

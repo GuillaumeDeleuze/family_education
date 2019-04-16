@@ -67,14 +67,12 @@
 
   <ul class="list-rewards">
     <% @family_rewards.each do |reward| %>
-      <%= link_to reward_path(reward) do %>
-        <li>
-          <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
-        </li>
-          <p>Nombre de points requis <%= reward.price %></p>
-      <% end %>
-      <%= link_to "edit", edit_reward_path(reward) %>
-      <%= button_to "delete", reward, :method => :delete %>
+      <li>
+        <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
+      </li>
+        <p>Nombre de points requis <%= reward.price %></p>
+        <%= link_to "edit", edit_reward_path(reward) %>
+        <%= button_to "delete", reward, :method => :delete %>
     <% end %>
   </ul>
 <% end %>

@@ -18,10 +18,22 @@ class RewardPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    if user.admin?
+      true
+    elsif user
+      true
+    else
+      false
+    end
   end
 
   def destroy?
-    true
+    if user.admin?
+      true
+    elsif user
+      true
+    else
+      false
+    end
   end
 end

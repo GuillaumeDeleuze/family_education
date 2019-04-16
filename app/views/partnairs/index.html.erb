@@ -1,5 +1,8 @@
 <h1>La liste de nos partenaires</h1>
-<% @partnairs.each do |partnair| %>
-  <h2><%= partnair.name %></h2>
-  <p><%= partnair.description %></p>
-<% end %>
+<p><%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id) %></p>
+
+  <% @partnairs.each do |partnair| %>
+    <h2><%= partnair.name %></h2>
+    <p><%= partnair.description %></p>
+  <% end %>
+

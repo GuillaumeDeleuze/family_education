@@ -5,6 +5,14 @@ class FamilyPolicy < ApplicationPolicy
     end
   end
 
+  def index
+    user.admin?
+  end
+
+  def show
+    user.admin?
+  end
+
   def create
     true
   end

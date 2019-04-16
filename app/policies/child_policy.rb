@@ -6,7 +6,13 @@ class ChildPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    if user.admin?
+      true
+    elsif user
+      true
+    else
+      false
+    end
   end
 
   def show?
@@ -14,6 +20,12 @@ class ChildPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    if user.admin?
+      true
+    elsif user
+      true
+    else
+      false
+    end
   end
 end

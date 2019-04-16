@@ -1,12 +1,11 @@
 <div>
   <h2>Ajouter une récompense</h2>
-  <div>
     <%= simple_form_for [@family, @reward] do |f| %>
-      <%= f.input :name, placeholder: 'Nom de la récompense' %>
-      <%= f.input :price, collection: 1..50 %>
-      <%= f.association :user, collection: @children %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  <% end %>
+      <%= f.input :name, label: 'Nom de la récompense', placeholder: 'Nom de la récompense' %>
+      <%= f.input :price, label: 'Coût', collection: 1..50, include_blank: false %>
+      <%= f.association :user, label: 'Selectionner un enfant', collection: @children, include_blank: false%>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+   <% end %>
 </div>
 
-<p> Revoir la liste de nos partenaires </p>
+<p> <%= link_to "Voir la liste de nos partenaires", partnairs_path %> </p>
