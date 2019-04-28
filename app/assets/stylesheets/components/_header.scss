@@ -1,0 +1,18 @@
+.header {
+    top:0;
+    right:0;
+    width: 100vw;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  .logo {
+      top:0;
+      right:0;
+      z-index:3;
+      width: 100%;
+  }
+  

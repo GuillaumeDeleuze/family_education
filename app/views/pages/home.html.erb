@@ -1,4 +1,9 @@
-<h1> Bienvenue sur ...</h1>
 
-<h2> <%= link_to "Première connection", new_family_path %> </h2>
-<h2> <%= link_to "Se connecter", new_user_session_path %> </h2>
+<%= render 'shared/navbar' %>
+
+<div class="welcome-connection"> 
+    <h1 class="title">bienvenue</h1> 
+    <h2> <%= link_to "S'inscrire", new_family_path %> </h2>
+    <h2> <%= link_to "Se connecter", new_user_session_path %> </h2>
+</div>
+
