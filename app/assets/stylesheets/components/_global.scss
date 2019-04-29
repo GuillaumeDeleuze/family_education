@@ -1,0 +1,44 @@
+html, body {
+    height:100%;
+}
+
+.page-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container--center {
+    justify-content: space-between;
+}
+
+.button-subscribe {
+    background-color: #057F9B;
+    color: white;
+    border-radius: 19px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 1px;
+    margin: 5px;
+    padding: 0px 61px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.connection {
+    color: black;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 2px;
+    padding: 0px 61px;
+    text-align: center;
+    text-transform: uppercase;  
+}
+
+
+
