@@ -35,8 +35,8 @@
           <%= link_to 'Les missions', family_missions_path(current_user.family)%>
         </li>
 <!-- A placer qlq part sur le carré Mission -->
-        <% if Mission.where(:status => 'pending').count > 0 %>
-          Nombre de mission à valider <%= Mission.where(:status => 'pending').count %>
+        <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
+          Nombre de mission à valider <%= Mission.where(user: @family).where(:status => 'pending').count %>
         <% end %>
 <!-- Première co -->
         <% if @family_rewards.last == nil %>
