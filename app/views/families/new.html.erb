@@ -1,12 +1,13 @@
- <div class="home page-container page-container--center">
-  
+<div class="home page-container page-container--center"> 
   <%= render 'shared/navbar' %>
-
   <div>
-      <%= simple_form_for @family do |f| %>
-      <%= f.input :name, label: 'Nom de votre Famille', placeholder: 'Nom de votre famille' %>
-      <%= f.button :submit, class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-   <%= render 'shared/footer' %>
+    <%= simple_form_for @family do |f| %>
+    <%= f.input :name, label: 'Création de la famille', placeholder: 'Nom de votre famille' %>
+    <%= f.button :submit, class: 'btn button-subscribe' %>
+  <% end %>
+
+  <%= render 'shared/footer' %>
+  
 </div>
+   
+
