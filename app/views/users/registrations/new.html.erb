@@ -1,25 +1,44 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="home page-container page-container--center">
+ <%= render 'shared/navbar' %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.hidden_field :family_id, :value => Family.last.id %>
+
+ <div class ="family-creation-form">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+  
+      <div class="name-email">
+        <%= f.input :name,
+                    label: "Nom",
+                    autofocus: true,                   
+                    input_html: { autocomplete: "email" }
+                    %>
+         <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+      </div>
+      <div class="form-inputs password">
+      
+        <%= f.input :password,
+                    label: "Mot de passe",
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    label: "Confirmer le mot de passe",
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.hidden_field :family_id, :value => Family.last.id %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Créer mon compte", class: 'btn button-subscribe' %>
+      </div>
+    <% end %>
+      <%= render "devise/shared/links" %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+
+  <%= render 'shared/footer' %>
+</div>
