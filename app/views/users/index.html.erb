@@ -1,56 +1,59 @@
-<h1>Tableau de bord</h1>
+<div class="home page-container page-container--center"> 
+  <h1>Tableau de bord</h1>
 
-<!-- PAGE ENFANT -->
-<% if current_user.child? %>
+  <!-- PAGE ENFANT -->
+  <% if current_user.child? %>
 
-  <ul>
-    <li>
-      <%= link_to 'Mes missions', family_missions_path(current_user.family) %>
-    </li>
-    <li>
-      <%= link_to 'Mes récompenses', family_rewards_path(current_user.family)%>
-    </li>
-  </ul>
-
-
-<!-- PAGE PARENT -->
-<!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
-
-<% else %>
-<!-- Première co -->
-  <% if current_user.family.user.where(child: true).last == nil %>
-    <%= link_to "Ajouter votre premier enfant", new_family_child_path(current_user.family_id) %>
-  <% else %>
-<!-- Vue normale -->
     <ul>
       <li>
-        <%= link_to 'Mes enfants', family_children_path(current_user.family) %>
+        <%= link_to 'Mes missions', family_missions_path(current_user.family) %>
       </li>
-<!-- Première co -->
-      <% if @family_missions.last == nil %>
-        <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id) %>
-      <% else %>
-<!-- Vue normale -->
+      <li>
+        <%= link_to 'Mes récompenses', family_rewards_path(current_user.family)%>
+      </li>
+    </ul>
+
+
+  <!-- PAGE PARENT -->
+  <!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
+
+  <% else %>
+  <!-- Première co -->
+    <% if current_user.family.user.where(child: true).last == nil %>
+      <%= link_to "Ajouter votre premier enfant", new_family_child_path(current_user.family_id),  class: 'btn button-subscribe' %>
+    <% else %>
+  <!-- Vue normale -->
+      <ul>
         <li>
-          <%= link_to 'Les missions', family_missions_path(current_user.family)%>
+          <%= link_to 'Mes enfants', family_children_path(current_user.family) %>
         </li>
-<!-- A placer qlq part sur le carré Mission -->
-        <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
-          Nombre de mission à valider <%= Mission.where(user: @family).where(:status => 'pending').count %>
-        <% end %>
-<!-- Première co -->
-        <% if @family_rewards.last == nil %>
-          <%= link_to 'Ajoutons une récompense', partnairs_path %>
+  <!-- Première co -->
+        <% if @family_missions.last == nil %>
+          <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id) %>
         <% else %>
-<!-- Vue normale  -->
+  <!-- Vue normale -->
           <li>
-            <%= link_to 'Les récompenses', family_rewards_path(current_user.family)%>
+            <%= link_to 'Les missions', family_missions_path(current_user.family)%>
           </li>
-          <li>
-            <%= link_to 'Nos partenaires', partnairs_path %>
-          </li>
-        </ul>
+  <!-- A placer qlq part sur le carré Mission -->
+          <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
+            Nombre de mission à valider <%= Mission.where(user: @family).where(:status => 'pending').count %>
+          <% end %>
+  <!-- Première co -->
+          <% if @family_rewards.last == nil %>
+            <%= link_to 'Ajoutons une récompense', partnairs_path %>
+          <% else %>
+  <!-- Vue normale  -->
+            <li>
+              <%= link_to 'Les récompenses', family_rewards_path(current_user.family)%>
+            </li>
+            <li>
+              <%= link_to 'Nos partenaires', partnairs_path %>
+            </li>
+          </ul>
+          <% end %>
         <% end %>
-      <% end %>
+    <% end %>
   <% end %>
-<% end %>
+  <%= render 'shared/footer' %>
+</div>
