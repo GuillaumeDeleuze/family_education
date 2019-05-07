@@ -1,8 +1,14 @@
-<h1>Mes p'tit bouts</h1>
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %>
 
-<button><%= link_to "Ajouter un membre à la famille", new_family_child_path(current_user.family_id) %></button>
+  <h1>Mes p'tit bouts</h1>
 
-<% @children.each do |child| %>
-  <li> <%= link_to child.name, child_path(child) %> </li>
-<% end %>
-
+ <div class="children-grid">
+    <% @children.each do |child| %>
+      <%= link_to child.name, child_path(child), class:'btn button-children' %>
+    <% end %>
+    
+</div>
+  <button><%= link_to "Ajouter un enfant", new_family_child_path(current_user.family_id), class: 'btn button-subscribe' %></button>
+  <%= render 'shared/footer' %>
+</div>
