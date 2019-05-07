@@ -1,4 +1,5 @@
-<div class="home page-container page-container--center"> 
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %>
   <h1>Tableau de bord</h1>
 
   <!-- PAGE ENFANT -->
@@ -23,7 +24,7 @@
       <%= link_to "Ajouter votre premier enfant", new_family_child_path(current_user.family_id),  class: 'btn button-subscribe' %>
     <% else %>
   <!-- Vue normale -->
-      <ul>
+      
         <li>
           <%= link_to 'Mes enfants', family_children_path(current_user.family) %>
         </li>
@@ -50,10 +51,13 @@
             <li>
               <%= link_to 'Nos partenaires', partnairs_path %>
             </li>
-          </ul>
+          
           <% end %>
         <% end %>
     <% end %>
   <% end %>
-  <%= render 'shared/footer' %>
+  
+<%= render 'shared/footer' %>
+
 </div>
+

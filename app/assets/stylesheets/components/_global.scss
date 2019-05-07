@@ -27,6 +27,7 @@ html, body {
     text-transform: uppercase;
     margin-top: 16px;
     text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 .connection {
@@ -51,10 +52,34 @@ h1 {
     margin-top: 10px; 
 }
 
-
-
 a {
     font-family: 'Maven Pro', sans-serif;
     text-decoration: underline;
     color: black;
 }
+
+.children-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 5px;
+  grid-gap: 10px;
+  text-decoration: none;
+}
+
+.button-children {
+    background-color: #057F9B;
+    color: white;
+    border-radius: 19px;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 37px;
+    letter-spacing: 1px;
+    padding: 0px;
+    margin:10px;
+    text-align: center;
+    margin-top: 7px;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif
+}
+
