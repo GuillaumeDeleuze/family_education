@@ -66,6 +66,18 @@ a {
   text-decoration: none;
 }
 
+.suggestion-container {
+    padding-top:30px;
+}
+
+.suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 5px 20px 20px 20px;
+    grid-gap: 5px;
+    text-decoration: none;
+  }
+
 .button-children {
     background-color: #057F9B;
     color: white;
@@ -82,4 +94,26 @@ a {
     text-decoration: none;
     font-family: 'Maven Pro', sans-serif
 }
+
+
+.button-suggestion {
+    background-color: #F7B235;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 17px;
+    letter-spacing: 1px;
+    padding: 6px;
+    margin: 3px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+
+
 

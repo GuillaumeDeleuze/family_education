@@ -1,32 +1,40 @@
-<h1>Missions</h1>
-<p>Selectionner une mission que doit faire votre enfant ou, ajoutez en une nouvelle</p>
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %>
 
 
-<div>
-  <h2>Ajouter une mission</h2>
-  <div>
-    <%= simple_form_for [@family, @mission] do |f| %>
-      <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
-      <%= f.input :point, label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false %>
-      <%= f.association :user, label: 'Quel enfant?', collection: @children, include_blank: false %>
-      <%= f.input :start_at, label: 'Début de la mission (facultatif)', as: :date, start_year: Date.today.year %>
-      <%= f.input :end_at, label: 'Fin de la mission (facultatif)', as: :date , start_year: Date.today.year %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  <% end %>
-</div>
 
-</div>
-<% suggestions = ["Arrêter de fumer", "Faire un Top 1","Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais hors de Gaulle", "Ranger sa chambre", "Être gentil.le"] %>
-
-<h2>Suggestions</h2>
-  <% suggestions.each do |suggestion| %>
-    <div class="suggestion">
-      <ul>
-        <li><%= suggestion %></li>
-    </ul>
+  <div class="family-creation-form">
+    
+    <p>Selectionner une mission que doit faire votre enfant ou ajoutez en une nouvelle</p>
+    <h2>Ajouter une mission</h2>
+    <div class="family-creation-form">
+      <%= simple_form_for [@family, @mission] do |f| %>
+        <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
+        <%= f.input :point, input_html: { class: 'input' },  label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false, class: 'btn button-subscribe' %>
+        <%= f.association :user, input_html: { class: 'input'}, label: 'Quel enfant?', collection: @children, include_blank: false %>
+        <%= f.input :start_at, input_html: { class: 'input' }, label: 'Début de la mission (facultatif)', as: :date, start_year: Date.today.year %>
+        <%= f.input :end_at, input_html: { class: 'input' },  label: 'Fin de la mission (facultatif)', as: :date , start_year: Date.today.year %>
+      <%= f.button :submit, class: 'btn button-subscribe' %>
+    <% end %>
   </div>
-  <% end %>
 
+  </div>
 
+  <% suggestions = ["Arrêter de fumer", "Faire un Top 1","Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais hors de Gaulle", "Ranger sa chambre", "Être gentil.le"] %>
 
+  <div class="suggestion-container">
+    <h1>Suggestions</h2>
+
+    <div class="suggestion-grid">
+
+      <% suggestions.each do |suggestion| %>
+        <div class="button-suggestion">
+            <%= suggestion %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'shared/footer' %>
+</div>
 
