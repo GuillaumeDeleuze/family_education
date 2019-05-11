@@ -1,8 +1,18 @@
-<h1>La liste de nos partenaires</h1>
-<p><%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id) %></p>
+<div class="home page-container page-container--center">
+
+  <%= render 'shared/navbar' %>
+
+  <h1>La liste de nos partenaires</h1>
+  <p><%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id) %></p>
 
   <% @partnairs.each do |partnair| %>
     <h2><%= partnair.name %></h2>
     <p><%= partnair.description %></p>
   <% end %>
+
+
+
+  <%= render 'shared/footer' %>
+</div>
+
 

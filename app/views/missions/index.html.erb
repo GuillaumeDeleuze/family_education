@@ -1,4 +1,7 @@
-<% if current_user.child? %>
+<div class="home page-container page-container--center">
+ <%= render 'shared/navbar' %>
+
+ <% if current_user.child? %>
 <!-- VUE ENFANT -->
 
   <h1>Mes missions</h1>
@@ -87,7 +90,7 @@
 <!-- VUE PARENT -->
   <h1>Voici la liste des missions en cours</h1>
 
-  <button type="button" class="btn btn-success"><%= link_to "Ajouter une mission", new_family_mission_path(current_user.family.id) %></button>
+  <button type="button" class="btn"><%= link_to "Ajouter une mission", new_family_mission_path(current_user.family.id),  class: 'btn button-subscribe' %></button>
 
 
 
@@ -133,20 +136,21 @@
       <% else %>
         <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
       <% end %>
-        <div class="card-body">
-          <ul class="list-missions">
+        <div class="card-body suggestion-grid">
+          
+          
             <% @family_missions.each do |mission| %>
               <% if mission.status == 'to_do' %>
                 <%= link_to mission_path(mission) do %>
-                  <li>
-                    <%= "#{mission.name.capitalize} (#{mission.user.name})"%>
-                  </li>
+                    <%= " Pour #{mission.user.name} : #{mission.name.capitalize} "%>
+                  
                 <% end %>
                 <%= link_to "edit", edit_mission_path(mission) %>
                 <%= button_to "delete", mission, :method => :delete %>
               <% end %>
             <% end %>
-          </ul>
+            
+          
         </div>
       </div>
     </div>
@@ -154,5 +158,6 @@
 
 <% end %>
 
-
+ <%= render 'shared/footer' %>
+</div>
 

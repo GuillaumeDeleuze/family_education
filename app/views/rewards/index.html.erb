@@ -1,80 +1,88 @@
-<% if current_user.child? %>
-<!-- VUE ENFANT -->
-<h1>Mes récompenses</h1>
-<h2>Mon nombre de points disponible <%= @current_user.point %></h2>
+<div class="home page-container page-container--center">
 
-  <div id="accordion">
-    <div class="card">
-      <div class="card-header" id="headingOne">
-        <h3 class="mb-0">
-          <a data-toggle="collapse" data-target="#collapseOne">
-            Les récompenses disponibles (met toi ienb)
-          </a>
-        </h3>
-      </div>
-      <div id="collapseOne" class="collapse show" data-parent="#accordion">
-        <div class="card-body">
-          <ul class="list-rewards">
-            <% @current_user.rewards.order('price DESC').each do |reward| %>
-              <% if reward.done? == false %>
-                <%= link_to reward_path(reward) do %>
-                  <li>
-                    <%= reward.name.capitalize %>
-                  </li>
-                    <p>Nombre de point requis <%= reward.price %></p>
+  <%= render 'shared/navbar' %>
+
+  <% if current_user.child? %>
+  <!-- VUE ENFANT -->
+  <h1>Mes récompenses</h1>
+  <h2>Mon nombre de points disponible <%= @current_user.point %></h2>
+
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h3 class="mb-0">
+            <a data-toggle="collapse" data-target="#collapseOne">
+              Les récompenses disponibles (met toi ienb)
+            </a>
+          </h3>
+        </div>
+        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+          <div class="card-body">
+            <ul class="list-rewards">
+              <% @current_user.rewards.order('price DESC').each do |reward| %>
+                <% if reward.done? == false %>
+                  <%= link_to reward_path(reward) do %>
+                    <li>
+                      <%= reward.name.capitalize %>
+                    </li>
+                      <p>Nombre de point requis <%= reward.price %></p>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-          </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h3 class="mb-0">
+            <a data-toggle="collapse" data-target="#collapseTwo">
+              Les récompenses déjà pécho
+            </a>
+          </h3>
+        </div>
+        <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
+          <div class="card-body">
+            <ul class="list-rewards">
+              <% @current_user.rewards.order('price DESC').each do |reward| %>
+                <% if reward.done?  %>
+                  <%= link_to reward_path(reward) do %>
+                    <li>
+                      <%= reward.name.capitalize %>
+                    </li>
+                      <p>Nombre de point requis <%= reward.price %></p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header" id="headingTwo">
-        <h3 class="mb-0">
-          <a data-toggle="collapse" data-target="#collapseTwo">
-            Les récompenses déjà pécho
-          </a>
-        </h3>
-      </div>
-      <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
-        <div class="card-body">
-          <ul class="list-rewards">
-            <% @current_user.rewards.order('price DESC').each do |reward| %>
-              <% if reward.done?  %>
-                <%= link_to reward_path(reward) do %>
-                  <li>
-                    <%= reward.name.capitalize %>
-                  </li>
-                    <p>Nombre de point requis <%= reward.price %></p>
-                <% end %>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 
+  <% else %>
+  <!-- VUE PARENT -->
 
-<% else %>
-<!-- VUE PARENT -->
+    <h1>Voici la liste des récompenses</h1>
 
-  <h1>Voici la liste des récompenses</h1>
+    <button><%= link_to "Ajouter une récompense",  new_family_reward_path(@current_user.family.id) %></button>
 
-  <button><%= link_to "Ajouter une récompense",  new_family_reward_path(@current_user.family.id) %></button>
-
-  <ul class="list-rewards">
-    <% @family_rewards.each do |reward| %>
-      <li>
-        <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
-      </li>
-        <p>Nombre de points requis <%= reward.price %></p>
-        <%= link_to "edit", edit_reward_path(reward) %>
-        <%= button_to "delete", reward, :method => :delete %>
-    <% end %>
-  </ul>
-<% end %>
+    <ul class="list-rewards">
+      <% @family_rewards.each do |reward| %>
+        <li>
+          <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
+        </li>
+          <p>Nombre de points requis <%= reward.price %></p>
+          <%= link_to "edit", edit_reward_path(reward) %>
+          <%= button_to "delete", reward, :method => :delete %>
+      <% end %>
+    </ul>
+  <% end %>
 
 <!-- Lien vers ajouter une récompense => amène dans un premier temps sur la liste des partenaires -->
+
+
+ <%= render 'shared/footer' %>
+</div>
