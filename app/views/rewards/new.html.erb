@@ -1,11 +1,24 @@
-<div>
-  <h2>Ajouter une récompense</h2>
+<div class="home page-container page-container--center">
+
+  <%= render 'shared/navbar' %>
+
+  <div class="family-creation-form">
+    <h1>Ajouter une récompense</h1>
     <%= simple_form_for [@family, @reward] do |f| %>
       <%= f.input :name, label: 'Nom de la récompense', placeholder: 'Nom de la récompense' %>
-      <%= f.input :price, label: 'Coût', collection: 1..50, include_blank: false %>
-      <%= f.association :user, label: 'Selectionner un enfant', collection: @children, include_blank: false%>
-      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= f.input :price, input_html: { class: 'input'}, label: 'Coût', collection: 1..50, include_blank: false %>
+      <%= f.association :user, input_html: { class: 'input'}, label: 'Selectionner un enfant', collection: @children, include_blank: false%>
+      <%= f.button :submit, 'Créer la récompense', class: 'btn button-subscribe' %>
    <% end %>
+
+  <p> <%= link_to "Voir la liste de nos partenaires", partnairs_path %> </p>
 </div>
 
-<p> <%= link_to "Voir la liste de nos partenaires", partnairs_path %> </p>
+  
+  <%= render 'shared/footer' %>
+</div>
+
+
+
+
+ 
