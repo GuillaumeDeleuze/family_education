@@ -141,10 +141,11 @@
           
             <% @family_missions.each do |mission| %>
               <% if mission.status == 'to_do' %>
+              <div class ="button-subscribe">
                 <%= link_to mission_path(mission) do %>
-                    <%= " Pour #{mission.user.name} : #{mission.name.capitalize} "%>
-                  
+                    <%= "Pour #{mission.user.name} : #{mission.name.capitalize}" %>
                 <% end %>
+              </div>
                 <%= link_to "edit", edit_mission_path(mission) %>
                 <%= button_to "delete", mission, :method => :delete %>
               <% end %>

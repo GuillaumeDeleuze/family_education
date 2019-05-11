@@ -1,6 +1,10 @@
 <div class="home page-container page-container--center">
   <%= render 'shared/navbar' %>
+
   <h1>Tableau de bord</h1>
+
+  <div class=" dashboard-grid">
+  
 
   <!-- PAGE ENFANT -->
   <% if current_user.child? %>
@@ -25,17 +29,17 @@
     <% else %>
   <!-- Vue normale -->
       
-        <li>
-          <%= link_to 'Mes enfants', family_children_path(current_user.family) %>
-        </li>
+        
+          <%= link_to 'Mes enfants', family_children_path(current_user.family), class: 'button-dashboard' %>
+        
   <!-- Première co -->
         <% if @family_missions.last == nil %>
           <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id) %>
         <% else %>
   <!-- Vue normale -->
-          <li>
-            <%= link_to 'Les missions', family_missions_path(current_user.family)%>
-          </li>
+          
+            <%= link_to 'Les missions', family_missions_path(current_user.family), class: 'button-dashboard'%>
+          
   <!-- A placer qlq part sur le carré Mission -->
           <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
             Nombre de mission à valider <%= Mission.where(user: @family).where(:status => 'pending').count %>
@@ -45,17 +49,18 @@
             <%= link_to 'Ajoutons une récompense', partnairs_path %>
           <% else %>
   <!-- Vue normale  -->
-            <li>
-              <%= link_to 'Les récompenses', family_rewards_path(current_user.family)%>
-            </li>
-            <li>
-              <%= link_to 'Nos partenaires', partnairs_path %>
-            </li>
+            
+              <%= link_to 'Les récompenses', family_rewards_path(current_user.family), class: 'button-dashboard'%>
+            
+            
+              <%= link_to 'Nos partenaires', partnairs_path, class: 'button-dashboard' %>
+            
           
           <% end %>
         <% end %>
     <% end %>
   <% end %>
+  </div>
   
 <%= render 'shared/footer' %>
 
