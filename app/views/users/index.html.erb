@@ -34,7 +34,7 @@
         
   <!-- Première co -->
         <% if @family_missions.last == nil %>
-          <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id) %>
+          <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id), class: 'button-dashboard' %>
         <% else %>
   <!-- Vue normale -->
           
@@ -46,7 +46,7 @@
           <% end %>
   <!-- Première co -->
           <% if @family_rewards.last == nil %>
-            <%= link_to 'Ajoutons une récompense', partnairs_path %>
+            <%= link_to 'Ajoutons une récompense', partnairs_path, class: 'button-dashboard' %>
           <% else %>
   <!-- Vue normale  -->
             

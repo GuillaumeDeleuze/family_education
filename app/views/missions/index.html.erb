@@ -136,21 +136,26 @@
       <% else %>
         <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
       <% end %>
-        <div class="card-body suggestion-grid">
+
+      <div class="missions-list">
+         <div class="card-body ongoing-mission">
           
           
             <% @family_missions.each do |mission| %>
               <% if mission.status == 'to_do' %>
-              <div class ="button-subscribe">
+              <div class ="ongoing-mission__cta">
                 <%= link_to mission_path(mission) do %>
                     <%= "Pour #{mission.user.name} : #{mission.name.capitalize}" %>
                 <% end %>
               </div>
-                <%= link_to "edit", edit_mission_path(mission) %>
-                <%= button_to "delete", mission, :method => :delete %>
+              <div class="ongoing-mission__links">
+                <%= link_to "edit", edit_mission_path(mission), class: 'button-small'%>
+                <%= button_to "delete", mission,  class: 'button-small', :method => :delete %>
+              </div>
               <% end %>
             <% end %>
-            
+          </div>
+          
           
         </div>
       </div>
