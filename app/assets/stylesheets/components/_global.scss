@@ -172,7 +172,7 @@ a {
 
 .ongoing-mission {
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   text-decoration:none;
 
   
@@ -199,6 +199,54 @@ a {
 
     a {
         color:white;
+    }
+
+}
+
+.ongoing-mission__date {
+
+    background-color: #F7B235;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 17px;
+    letter-spacing: 1px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+    flex-grow: 1;
+    padding: 10px;
+
+    p {
+        margin:0;
+    }
+}
+
+
+.ongoing-mission__rewards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 17px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+    flex-grow: 1;
+    padding: 10px;
+
+    p {
+        margin:0;
     }
 
 }
