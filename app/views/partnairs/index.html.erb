@@ -6,9 +6,14 @@
   <p><%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id) %></p>
 
   <% @partnairs.each do |partnair| %>
-    <h2><%= partnair.name %></h2>
-    <p><%= partnair.description %></p>
+    <div class='partnair-card'>
+      <div class="partnair-infos">
+        <h2><%= partnair.name %></h2>
+        <p><%= partnair.description %></p>
+      </div>
+    </div>
   <% end %>
+    
 
 
 

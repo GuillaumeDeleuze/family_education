@@ -1,0 +1,23 @@
+.partnair-card {
+    justify-content: space-between;
+    color: white;
+    background: linear-gradient(360deg, #000000 -20.24%, rgba(255, 255, 255, 0) 80%), url(http://www.lacamillienne.fr/wp-content/uploads/2017/04/escalade-2-1080x720.jpg);
+    margin: 10px;
+    background-size: cover;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 14px;
+    }
+
+    p {
+        font-family: 'Maven Pro', sans-serif;
+        font-size: 14px;
+    }
+}
+
+.partnair-infos {
+    display:flex;
+    flex-direction: column;
+}
