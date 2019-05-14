@@ -138,25 +138,26 @@
       <% end %>
 
       <div class="missions-list">
-        <div class="card-body ongoing-mission">
-          <% @family_missions.each do |mission| %>
+        
+        <% @family_missions.each do |mission| %>
+          <div class="card-body ongoing-mission">
             <% if mission.status == 'to_do' %>
-            <div class ="ongoing-mission__cta">
-              <%= link_to mission_path(mission) do %>
-                  <%= "Pour #{mission.user.name} : #{mission.name.capitalize}" %>
-              <% end %>
-            </div>
-            <div class="ongoing-mission__links">
-              <%= link_to "edit", edit_mission_path(mission), class: 'button-small'%>
-              <%= button_to "delete", mission,  class: 'button-small', :method => :delete %>
-            </div>
-            </div>
+              <div class ="ongoing-mission__cta">
+                <%= link_to mission_path(mission) do %>
+                    <%= "Pour #{mission.user.name} : #{mission.name.capitalize}" %>
+                <% end %>
+              </div>
+              <div class="ongoing-mission__links">
+                <%= link_to "modifier", edit_mission_path(mission), class: 'button-small'%>
+                <%= button_to "Supprimer",  mission,  class: 'button-small', :method => :delete %>
+              </div>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 
   <% end %>
 
