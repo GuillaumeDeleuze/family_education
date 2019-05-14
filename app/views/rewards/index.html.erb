@@ -67,18 +67,23 @@
 
     <h1>Voici la liste des récompenses</h1>
 
-    <button><%= link_to "Ajouter une récompense",  new_family_reward_path(@current_user.family.id) %></button>
+    <button><%= link_to "Ajouter une récompense",  new_family_reward_path(@current_user.family.id), class: 'button-subscribe' %></button>
 
-    <ul class="list-rewards">
+   <div class="rewards-list">
       <% @family_rewards.each do |reward| %>
-        <li>
+      <div class="reward">
+        <div class="reward__name">
           <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
-        </li>
           <p>Nombre de points requis <%= reward.price %></p>
-          <%= link_to "edit", edit_reward_path(reward) %>
-          <%= button_to "delete", reward, :method => :delete %>
+        </div>
+          <div class="reward__cta">
+            <%= link_to "edit", edit_reward_path(reward), class: 'button-small' %>
+            <%= button_to "delete", reward, class: 'button-small', :method => :delete %>
+          </div>     
+      </div>
       <% end %>
-    </ul>
+  </div>
+    
   <% end %>
 
 <!-- Lien vers ajouter une récompense => amène dans un premier temps sur la liste des partenaires -->
