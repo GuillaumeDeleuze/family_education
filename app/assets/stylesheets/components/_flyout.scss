@@ -21,14 +21,15 @@ $flyout-max-width: 300px;
   }
   .flyout-header {
     border-bottom: 1px solid #DDD;
-    padding: 10px;
-    background-color: #212529;
+    
+    background-color: #057F9B;
     height: 100px;
-    color: #C6C6C6;
+    color: white;
     font-size: 0.8em;
     .flyout-header-content {
-      padding-top: 30px;
-      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
     }
   }
   .flyout-bottom {
