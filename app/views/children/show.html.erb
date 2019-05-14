@@ -1,15 +1,31 @@
-<h1><%= @child.name.capitalize %></h1>
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %>
+    <h1><%= @child.name.capitalize %></h1>
+    <div class="family-creation-form">
+      <h1>Les missions attribuées</h1>
 
-<h2>Les missions attribuées</h2>
-  <ul>
-    <% @child.missions.each do |mission| %>
-      <li><%= mission.name.capitalize %></li>
-      <p><%= "Jusqu'au #{mission.end_at}" %></p>
-    <% end %>
-  </ul>
-<h2>Les récompenses attribuées</h2>
-  <ul>
-    <% @child.rewards.each do |reward| %>
-      <li><%= reward.name.capitalize %></li>
-    <% end %>
-  </ul>
+        <div class="card-body ongoing-mission">
+          <% @child.missions.each do |mission| %>
+          <div class ="ongoing-mission__date">  
+            
+              <%= mission.name.capitalize %> 
+              <p><%= "Jusqu'au #{mission.end_at}" %></p>
+          </div>
+          <% end %>
+        </div>  
+        
+      <h1>Les récompenses attribuées</h1>
+          <div class="card-body ongoing-mission__rewards">
+            <% @child.rewards.each do |reward| %>
+            <div class ="ongoing-mission__date">
+              <%= reward.name.capitalize %>
+            </div>
+            <% end %>
+          </div>
+    </div>
+
+  <%= render 'shared/footer' %>
+</div>
+
+
+
