@@ -3,13 +3,19 @@
   <%= render 'shared/navbar' %>
 
   <h1>La liste de nos partenaires</h1>
-  <p><%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id) %></p>
+  
 
   <% @partnairs.each do |partnair| %>
-    <h2><%= partnair.name %></h2>
-    <p><%= partnair.description %></p>
+    <div class='partnair-card'>
+      <%= image_tag 'escap.jpg', class: 'card-img'%>
+      <div class="partnair-infos">
+        <h2><%= partnair.name %></h2>
+        <p><%= partnair.description %></p>
+      </div>
+    </div>
   <% end %>
-
+    
+<%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
 
 
   <%= render 'shared/footer' %>
