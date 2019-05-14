@@ -172,7 +172,7 @@ a {
 
 .ongoing-mission {
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   text-decoration:none;
 
   
@@ -203,7 +203,29 @@ a {
 
 }
 
-.ongoing-mission__date {
+
+.ongoing-mission__links {
+    display:flex;
+
+    .button-small {
+        height:100%;
+    }
+    .button-small:first-child {
+        margin-right: 5px;
+    }
+    
+}
+
+
+.child-mission-list {
+
+    display:flex;
+    flex-direction: column;
+    text-decoration:none;
+
+}
+
+.child-mission-list__date {
 
     background-color: #F7B235;
     color: white;
@@ -229,7 +251,7 @@ a {
 }
 
 
-.ongoing-mission__rewards {
+.child-mission-list__rewards {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -251,14 +273,3 @@ a {
 
 }
 
-.ongoing-mission__links {
-    display:flex;
-
-    .button-small {
-        height:100%;
-    }
-    .button-small:first-child {
-        margin-right: 5px;
-    }
-    
-}
