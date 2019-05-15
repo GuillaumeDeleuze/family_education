@@ -85,7 +85,23 @@ a {
     text-decoration: none;
     }
 
-
+.button-widou {
+    background-color: #057F9B;
+    color: white;
+    border-radius: 19px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 1px;
+    margin: 5px;
+    padding: 0px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 16px;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+}
 
     .button-dashboard {
         background-color: #057F9B;
@@ -210,6 +226,36 @@ a {
 
 }
 
+.available-reward {
+    background-color: #F7B235;
+    width: 100%;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 17px;
+    letter-spacing: 1px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+    flex-grow: 1;
+    padding: 5px;
+    flex-direction: column;
+    
+    p {
+        margin:0;
+    }
+
+    a {
+        color:white;
+    }
+    
+}
+
 .reward__cta {
     display:flex;
 
@@ -245,6 +291,31 @@ a {
     font-family: 'Maven Pro', sans-serif;
     flex-grow: 1;
     padding: 10px 0;
+
+    a {
+        color:white;
+    }
+
+}
+
+
+.ongoing-mission-parents__CTA {
+
+    background-color: #F7B235;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 1px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+    padding: 5px;
 
     a {
         color:white;
@@ -322,3 +393,51 @@ a {
 
 }
 
+.ongoing-mission-children__CTA {
+    background-color: #F7B235;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 1px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+    padding: 5px;
+
+    a {
+        color:white;
+    }
+}
+
+.notif-mission {
+    background-color: #FF4221;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    color: white;
+    font-size: 13px;
+    position: relative;
+    bottom: 180px;
+    left: 356px;
+}
+
+.validation-buttons {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .btn-success {
+        color:white;
+    
+    }
+}

@@ -9,15 +9,11 @@
   <!-- PAGE ENFANT -->
   <% if current_user.child? %>
 
-    <ul>
-      <li>
-        <%= link_to 'Mes missions', family_missions_path(current_user.family) %>
-      </li>
-      <li>
-        <%= link_to 'Mes récompenses', family_rewards_path(current_user.family)%>
-      </li>
-    </ul>
-
+   
+        <%= link_to 'Mes missions', family_missions_path(current_user.family), class: 'button-dashboard' %>
+    
+        <%= link_to 'Mes récompenses', family_rewards_path(current_user.family), class: 'button-dashboard'%>
+  
 
   <!-- PAGE PARENT -->
   <!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
@@ -41,9 +37,7 @@
             <%= link_to 'Les missions', family_missions_path(current_user.family), class: 'button-dashboard'%>
           
   <!-- A placer qlq part sur le carré Mission -->
-          <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
-            Nombre de mission à valider <%= Mission.where(user: @family).where(:status => 'pending').count %>
-          <% end %>
+          
   <!-- Première co -->
           <% if @family_rewards.last == nil %>
             <%= link_to 'Ajoutons une récompense', partnairs_path, class: 'button-dashboard' %>
@@ -60,6 +54,11 @@
         <% end %>
     <% end %>
   <% end %>
+  <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
+            <div class="notif-mission">
+              <%= Mission.where(user: @family).where(:status => 'pending').count %>
+            </div>
+          <% end %>
   </div>
   
 <%= render 'shared/footer' %>

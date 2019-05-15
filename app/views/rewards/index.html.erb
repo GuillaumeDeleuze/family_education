@@ -5,31 +5,29 @@
   <% if current_user.child? %>
   <!-- VUE ENFANT -->
   <h1>Mes récompenses</h1>
-  <h2>Mon nombre de points disponible <%= @current_user.point %></h2>
+  <h1>Mon nombre de points disponible <%= @current_user.point %></h1>
 
     <div id="accordion">
       <div class="card">
         <div class="card-header" id="headingOne">
           <h3 class="mb-0">
-            <a data-toggle="collapse" data-target="#collapseOne">
+            <h1 data-toggle="collapse" data-target="#collapseOne">
               Les récompenses disponibles (met toi ienb)
-            </a>
+            </h1>
           </h3>
         </div>
         <div id="collapseOne" class="collapse show" data-parent="#accordion">
-          <div class="card-body">
-            <ul class="list-rewards">
-              <% @current_user.rewards.order('price DESC').each do |reward| %>
-                <% if reward.done? == false %>
-                  <%= link_to reward_path(reward) do %>
-                    <li>
-                      <%= reward.name.capitalize %>
-                    </li>
-                      <p>Nombre de point requis <%= reward.price %></p>
-                  <% end %>
+          <div class="rewards-list">
+            <% @current_user.rewards.order('price DESC').each do |reward| %>
+              <% if reward.done? == false %>
+                <%= link_to reward_path(reward) do %>
+                  <div class="available-reward">
+                    <%= reward.name.capitalize %>
+                    <p>Nombre de point requis <%= reward.price %></p>
+                  </div>
                 <% end %>
               <% end %>
-            </ul>
+            <% end %>
           </div>
         </div>
       </div>
@@ -37,25 +35,23 @@
       <div class="card">
         <div class="card-header" id="headingTwo">
           <h3 class="mb-0">
-            <a data-toggle="collapse" data-target="#collapseTwo">
+            <h1 data-toggle="collapse" data-target="#collapseTwo">
               Les récompenses déjà pécho
-            </a>
+            </h1>
           </h3>
         </div>
         <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
-          <div class="card-body">
-            <ul class="list-rewards">
-              <% @current_user.rewards.order('price DESC').each do |reward| %>
-                <% if reward.done?  %>
-                  <%= link_to reward_path(reward) do %>
-                    <li>
-                      <%= reward.name.capitalize %>
-                    </li>
-                      <p>Nombre de point requis <%= reward.price %></p>
-                  <% end %>
+          <div class="rewards-list">
+            <% @current_user.rewards.order('price DESC').each do |reward| %>
+              <% if reward.done?  %>
+                <%= link_to reward_path(reward) do %>
+                <div class="available-reward">
+                  <%= reward.name.capitalize %>
+                  <p>Nombre de point requis <%= reward.price %></p>
+                </div>
                 <% end %>
               <% end %>
-            </ul>
+            <% end %>
           </div>
         </div>
       </div>
