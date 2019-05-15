@@ -103,7 +103,7 @@
           </a>
         </h2>
       </div>
-      <% if Mission.where(:status => 'pending').count == 0 %>
+      <% if Mission.where(user: @family).where(:status => 'pending').count == 0 %>
         <div id="collapseOne" class="collapse hide" data-parent="#accordion">
       <% else %>
         <div id="collapseOne" class="collapse show" data-parent="#accordion">
@@ -131,7 +131,7 @@
           </a>
         </h2>
       </div>
-      <% if Mission.where(:status => 'pending').count == 0 %>
+      <% if (Mission.where(user: @family).where(:status => 'to_do').count > 0 && Mission.where(user: @family).where(:status => 'pending').count == 0)%>
         <div id="collapseTwo" class="collapse show" data-parent="#accordion">
       <% else %>
         <div id="collapseTwo" class="collapse hide" data-parent="#accordion">

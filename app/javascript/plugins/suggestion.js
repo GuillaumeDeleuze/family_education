@@ -1,4 +1,4 @@
-const suggestions = document.querySelectorAll('.suggestion');
+const suggestions = document.querySelectorAll('.button-suggestion');
 let missionName = document.getElementById('mission_name');
 
 

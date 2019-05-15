@@ -21,10 +21,16 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new(mission_params)
     @family = Family.find(params[:family_id])
+    @family_rewards = Reward.where(user: @family)
     authorize @mission
     if @mission.save
-      redirect_to family_missions_path(current_user.family.id)
-      flash[:notice] = "Votre mission a bien été créée"
+      if @family_rewards.last == nil
+        redirect_to root_path
+        flash[:notice] = "Votre mission a bien été créée"
+      else
+        redirect_to family_missions_path(current_user.family.id)
+        flash[:notice] = "Votre mission a bien été créée"
+      end
     else
       puts "fail"
       render new

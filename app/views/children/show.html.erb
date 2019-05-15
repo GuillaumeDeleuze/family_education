@@ -5,7 +5,7 @@
       <h1>Les missions attribuées</h1>
 
         <div class="card-body child-mission-list">
-          <% @child.missions.each do |mission| %>
+          <% @child.missions.where(:status => 'pending').each do |mission| %>
           <div class ="child-mission-list__date">  
             
               <%= mission.name.capitalize %> 
