@@ -1,26 +1,40 @@
-<h1><%= @reward.name %></h1>
 
-<!-- VUE ENFANT -->
-<% if current_user.child? %>
-  <p>Nombre de points requis : <%= @reward.price %></p>
-    <% if current_user.point >= @reward.price && @reward.done == false %>
-      <%= "JE LE VEUX !" %>
-      <%= simple_form_for @reward do |f| %>
-        <%= f.hidden_field :done, :value => true %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-      <% end %>
-    <% elsif @reward.done %>
-      <%= "Hep hep tu as déjà pris tout ça petit garnement" %>
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %>
+
+  <div class="family-creation-form">
+    <h1><%= @reward.name %></h1>
+
+    <!-- VUE ENFANT -->
+    <% if current_user.child? %>
+      <p>Nombre de points requis : <%= @reward.price %></p>
+        <% if current_user.point >= @reward.price && @reward.done == false %>
+          <%= "JE LE VEUX !" %>
+          <%= simple_form_for @reward do |f| %>
+            <%= f.hidden_field :done, :value => true %>
+            <%= f.button :submit, "C'est parti", class: 'btn button-widou' %>
+             
+          <% end %>
+        <% elsif @reward.done %>
+          <%= "Hep hep tu as déjà pris tout ça petit garnement" %>
+        <% else %>
+          <%= "Waouhhh calm down il te manque encore #{@reward.price - current_user.point} points" %>
+        <% end %>
+
+    <!-- VUE PARENT -->
     <% else %>
-      <%= "Waouhhh calm down il te manque encore #{@reward.price - current_user.point} points" %>
+      <%= "Hey:)" %>
+    <!-- affiche la récompense
+    Si code caché le dévoile si choisi de payer -->
+
+
+
     <% end %>
-
-<!-- VUE PARENT -->
-<% else %>
-  <%= "Hey:)" %>
-<!-- affiche la récompense
-Si code caché le dévoile si choisi de payer -->
+  </div>
 
 
 
-<% end %>
+
+  <%= render 'shared/footer' %>
+
+</div>
