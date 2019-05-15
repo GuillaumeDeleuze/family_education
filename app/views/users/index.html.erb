@@ -53,12 +53,13 @@
           <% end %>
         <% end %>
     <% end %>
+      <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
+              <div class="notif-mission">
+                <%= Mission.where(user: @family).where(:status => 'pending').count %>
+              </div>
+      <% end %>
   <% end %>
-  <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
-            <div class="notif-mission">
-              <%= Mission.where(user: @family).where(:status => 'pending').count %>
-            </div>
-          <% end %>
+  
   </div>
   
 <%= render 'shared/footer' %>
