@@ -31,9 +31,15 @@
           <%= "Mission toujours en cours" %>
         <% elsif @mission.pending? %>
           <%= "Vérifie que la mission a été correctement effectuée" %>
+          
           <%= simple_form_for @mission do |f| %>
-            <%= f.input :status, collection: [['Mission incomplète', 'to_do'], ['Mission rondement menée', 'done']] %>
-            <%= f.button :submit, class: 'btn btn-primary' %>
+            <%= f.hidden_field :status, :value => 'done' %>
+            <%= f.button :submit, 'parfait', class: 'btn btn-primary' %>
+          <% end %>
+
+          <%= simple_form_for @mission do |f| %>
+            <%= f.hidden_field :status, :value => 'to_do' %>
+            <%= f.button :submit, 'à refaire', class: 'btn btn-primary' %>
           <% end %>
         <% else %>
           <%= "Mission réalisé avec Brio on peut être fière" %>
