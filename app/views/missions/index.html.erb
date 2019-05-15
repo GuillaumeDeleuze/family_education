@@ -1,3 +1,10 @@
+<% @family_missions.where(repition: true).each do |mission| %>
+  <% if ((mission.updated_at.day != Time.current.day) && mission.status == "done" ) %>  
+    <% mission.status = "to_do" %>  
+    <% mission.save %>
+  <% end %>
+<% end %>
+
 <div class="home page-container page-container--center">
 <%= render 'shared/navbar' %>
 
