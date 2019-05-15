@@ -14,7 +14,7 @@
       <% if @mission.to_do?  %>
         <%= simple_form_for @mission do |f| %>
           <%= f.hidden_field :status, :value => 'pending' %>
-          <%= f.button :submit, class: 'btn btn-primary' %>
+          <%= f.button :submit, "J'ai terminé la mission", class: 'btn button-widou' %>
         <% end %>
       <% elsif @mission.pending? %>
         <p><%= "En cours de vérification par le Big Boss" %></p>
@@ -31,16 +31,17 @@
           <%= "Mission toujours en cours" %>
         <% elsif @mission.pending? %>
           <%= "Vérifie que la mission a été correctement effectuée" %>
-          
-          <%= simple_form_for @mission do |f| %>
-            <%= f.hidden_field :status, :value => 'done' %>
-            <%= f.button :submit, 'parfait', class: 'btn btn-primary' %>
-          <% end %>
+          <div class="validation-buttons">
+            <%= simple_form_for @mission do |f| %>
+              <%= f.hidden_field :status, :value => 'done' %>
+              <%= f.button :submit, 'parfait', class: 'btn btn-success' %>
+            <% end %>
 
-          <%= simple_form_for @mission do |f| %>
-            <%= f.hidden_field :status, :value => 'to_do' %>
-            <%= f.button :submit, 'à refaire', class: 'btn btn-primary' %>
-          <% end %>
+            <%= simple_form_for @mission do |f| %>
+              <%= f.hidden_field :status, :value => 'to_do' %>
+              <%= f.button :submit, 'à refaire', class: 'btn btn-danger' %>
+            <% end %>
+          </div>
         <% else %>
           <%= "Mission réalisé avec Brio on peut être fière" %>
         <% end %>
