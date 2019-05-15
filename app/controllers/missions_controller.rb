@@ -72,6 +72,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:user_id, :start_at, :end_at, :point, :name, :status)
+    params.require(:mission).permit(:user_id, :start_at, :end_at, :point, :name, :status, :repition)
   end
 end
