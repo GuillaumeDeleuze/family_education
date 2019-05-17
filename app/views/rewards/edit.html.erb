@@ -1,6 +1,19 @@
-<%= simple_form_for [@family, @reward] do |f| %>
-  <%= f.input :name, placeholder: 'Nom de la récompense' %>
-  <%= f.input :price, collection: 1..50 %>
-  <%= f.association :user, collection: @children %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<div class="home page-container page-container--center">
+
+  <%= render 'shared/navbar' %>
+
+  <div class="family-creation-form">
+    <h1><%= @reward.name %></h1>
+    <%= simple_form_for [@family, @reward] do |f| %>
+      <%= f.input :name, label: 'Nom de la récompense', placeholder: 'Nom de la récompense' %>
+      <%= f.input :price, input_html: { class: 'input'}, label: 'Coût', collection: 1..50, include_blank: false %>
+      <%= f.button :submit, 'Modifier la récompense', class: 'btn button-subscribe' %>
+   <% end %>
+
+   <%= link_to "Voir la liste de nos partenaires", partnairs_path, class: 'link' %> 
+</div>
+
+  
+  <%= render 'shared/footer' %>
+</div>
+

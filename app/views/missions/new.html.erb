@@ -2,27 +2,10 @@
   <%= render 'shared/navbar' %>
 
 
-
-  <div class="family-creation-form">
-    
-    <p>Selectionner une mission que doit faire votre enfant ou ajoutez en une nouvelle</p>
-    <h2>Ajouter une mission</h2>
-    <div class="family-creation-form">
-      <%= simple_form_for [@family, @mission] do |f| %>
-        <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
-        <%= f.input :point, input_html: { class: 'input' },  label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false, class: 'btn button-subscribe' %>
-        <%= f.input :repition, input_html: { class: 'input'}, label: 'Chaque jour?', as: :select, include_blank: false, collection: [['Oui', true],['Non', false]] %>
-        <%= f.association :user, input_html: { class: 'input'}, label: 'Quel enfant?', collection: @children, include_blank: false %>
-        <%= f.input :start_at, input_html: { class: 'input' }, label: 'Début de la mission (facultatif)', as: :date, start_year: Date.today.year %>
-        <%= f.input :end_at, input_html: { class: 'input' },  label: 'Fin de la mission (facultatif)', as: :date , start_year: Date.today.year %>
-      <%= f.button :submit, class: 'btn button-subscribe' %>
-    <% end %>
-  </div>
-
-  </div>
-
   <% suggestions = ["Arrêter de fumer", "Faire un Top 1","Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais hors de Gaulle", "Ranger sa chambre", "Être gentil.le"] %>
 
+    <p>Selectionner une mission que doit faire votre enfant ou ajoutez en une nouvelle</p>
+    
   <div class="suggestion-container">
     <h1>Suggestions</h2>
 
@@ -34,6 +17,22 @@
       </div>
       <% end %>
     </div>
+  </div>
+
+    <h2>Ajouter une mission</h2>
+
+  <div class="family-creation-form">
+    
+    <div class="family-creation-form">
+      <%= simple_form_for [@family, @mission] do |f| %>
+        <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
+        <%= f.input :point, input_html: { class: 'input' },  label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false, class: 'btn button-subscribe' %>
+        <%= f.input :repition, input_html: { class: 'input'}, label: 'Récurrence (chaque jour)?', as: :select, include_blank: false, collection: [['Oui', true],['Non', false]] %>
+        <%= f.association :user, input_html: { class: 'input'}, label: 'Quel enfant?', collection: @children, include_blank: false %>
+      <%= f.button :submit, class: 'btn button-subscribe' %>
+    <% end %>
+  </div>
+
   </div>
 
   <%= render 'shared/footer' %>

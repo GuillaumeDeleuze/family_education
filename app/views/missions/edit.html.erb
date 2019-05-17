@@ -1,9 +1,18 @@
-<%= simple_form_for @mission do |f| %>
-  <%= f.input :name, placeholder: 'Nom de la mission' %>
-    <%= f.input :point, collection: 1..20 %>
-    <%= f.association :user, collection: @children %>
-    <%= f.input :repition, input_html: { class: 'input'}, label: 'Chaque jour?', as: :select, include_blank: false, collection: [['Oui', true],['Non', false]] %>
-    <%= f.input :start_at, as: :string, placeholder: 'jj/mm/yy' %>
-    <%= f.input :end_at, as: :string , placeholder: 'jj/mm/yy' %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %>
+
+  <div class="family-creation-form">
+    <h1><%= @mission.name %></h1>
+    <div class="family-creation-form">
+      <%= simple_form_for [@family, @mission] do |f| %>
+        <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
+        <%= f.input :point, input_html: { class: 'input' },  label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false, class: 'btn button-subscribe' %>
+        <%= f.input :repition, input_html: { class: 'input'}, label: 'Récurrence (chaque jour)?', as: :select, include_blank: false, collection: [['Oui', true],['Non', false]] %>
+      <%= f.button :submit, "Modifier la mission" ,class: 'btn button-subscribe' %>
+    <% end %>
+  </div>
+
+  </div>
+
+  <%= render 'shared/footer' %>
+</div>

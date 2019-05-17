@@ -4,6 +4,7 @@
 
   <h1>La liste de nos partenaires</h1>
   
+  <%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
 
   <% @partnairs.each do |partnair| %>
     <div class='partnair-card'>
@@ -15,7 +16,6 @@
     </div>
   <% end %>
     
-<%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
 
 
   <%= render 'shared/footer' %>
