@@ -34,9 +34,14 @@
             <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id), class: 'button-dashboard' %>
           <% else %>
     <!-- Vue normale -->
-            
+            <div class="mission-notif">
               <%= link_to 'Les missions', family_missions_path(current_user.family), class: 'button-dashboard'%>
-            
+               <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
+                <div class="notification">
+                  <%= Mission.where(user: @family).where(:status => 'pending').count %>
+                </div>
+        <% end %>
+            </div>
     <!-- A placer qlq part sur le carré Mission -->
             
     <!-- Première co -->
@@ -54,11 +59,7 @@
             <% end %>
           <% end %>
       <% end %>
-        <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
-                <div class="notif-mission">
-                  <%= Mission.where(user: @family).where(:status => 'pending').count %>
-                </div>
-        <% end %>
+       
     <% end %>
     
     </div>
