@@ -1,65 +1,67 @@
 <div class="home page-container page-container--center">
   <%= render 'shared/navbar' %>
 
-  <h1>Tableau de bord</h1>
-
-  <div class=" dashboard-grid">
+  <div class="main-content">
+    <h1>Tableau de bord</h1>
   
-
-  <!-- PAGE ENFANT -->
-  <% if current_user.child? %>
-
-   
-        <%= link_to 'Mes missions', family_missions_path(current_user.family), class: 'button-dashboard' %>
+    <div class=" dashboard-grid">
     
-        <%= link_to 'Mes récompenses', family_rewards_path(current_user.family), class: 'button-dashboard'%>
-  
 
-  <!-- PAGE PARENT -->
-  <!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
+    <!-- PAGE ENFANT -->
+    <% if current_user.child? %>
 
-  <% else %>
-  <!-- Première co -->
-    <% if current_user.family.user.where(child: true).last == nil %>
-      <%= link_to "Ajouter votre premier enfant", new_family_child_path(current_user.family_id),  class: 'btn button-subscribe' %>
-    <% else %>
-  <!-- Vue normale -->
+    
+          <%= link_to 'Mes missions', family_missions_path(current_user.family), class: 'button-dashboard' %>
       
+          <%= link_to 'Mes récompenses', family_rewards_path(current_user.family), class: 'button-dashboard'%>
+    
+
+    <!-- PAGE PARENT -->
+    <!-- D'après moi, il faut afficher les 4 infos sous forme de carrés cliquable voir : Appli TBM (itinéraire horaire proximité trafic) mais en plus gros et plus beau -->
+
+    <% else %>
+    <!-- Première co -->
+      <% if current_user.family.user.where(child: true).last == nil %>
+        <%= link_to "Ajouter votre premier enfant", new_family_child_path(current_user.family_id),  class: 'btn button-subscribe' %>
+      <% else %>
+    <!-- Vue normale -->
         
-          <%= link_to 'Mes enfants', family_children_path(current_user.family), class: 'button-dashboard' %>
-        
-  <!-- Première co -->
-        <% if @family_missions.last == nil %>
-          <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id), class: 'button-dashboard' %>
-        <% else %>
-  <!-- Vue normale -->
           
-            <%= link_to 'Les missions', family_missions_path(current_user.family), class: 'button-dashboard'%>
+            <%= link_to 'Mes enfants', family_children_path(current_user.family), class: 'button-dashboard' %>
           
-  <!-- A placer qlq part sur le carré Mission -->
-          
-  <!-- Première co -->
-          <% if @family_rewards.last == nil %>
-            <%= link_to 'Ajoutons une récompense', partnairs_path, class: 'button-dashboard' %>
+    <!-- Première co -->
+          <% if @family_missions.last == nil %>
+            <%= link_to "Ajoutons une première mission", new_family_mission_path(current_user.family.id), class: 'button-dashboard' %>
           <% else %>
-  <!-- Vue normale  -->
+    <!-- Vue normale -->
             
-              <%= link_to 'Les récompenses', family_rewards_path(current_user.family), class: 'button-dashboard'%>
+              <%= link_to 'Les missions', family_missions_path(current_user.family), class: 'button-dashboard'%>
             
+    <!-- A placer qlq part sur le carré Mission -->
             
-              <%= link_to 'Nos partenaires', partnairs_path, class: 'button-dashboard' %>
+    <!-- Première co -->
+            <% if @family_rewards.last == nil %>
+              <%= link_to 'Ajoutons une récompense', partnairs_path, class: 'button-dashboard' %>
+            <% else %>
+    <!-- Vue normale  -->
+              
+                <%= link_to 'Les récompenses', family_rewards_path(current_user.family), class: 'button-dashboard'%>
+              
+              
+                <%= link_to 'Nos partenaires', partnairs_path, class: 'button-dashboard' %>
+              
             
-          
+            <% end %>
           <% end %>
+      <% end %>
+        <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
+                <div class="notif-mission">
+                  <%= Mission.where(user: @family).where(:status => 'pending').count %>
+                </div>
         <% end %>
     <% end %>
-      <% if Mission.where(user: @family).where(:status => 'pending').count > 0 %>
-              <div class="notif-mission">
-                <%= Mission.where(user: @family).where(:status => 'pending').count %>
-              </div>
-      <% end %>
-  <% end %>
-  
+    
+    </div>
   </div>
   
 <%= render 'shared/footer' %>
