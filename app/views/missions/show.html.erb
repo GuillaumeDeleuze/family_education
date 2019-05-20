@@ -8,7 +8,6 @@
     <% if current_user.child? %>
     <!-- VUE ENFANT -->
       <p>Début de la mission le : <%= @mission.start_at %></p>
-      <p><%= "Tu as jusqu'au #{@mission.end_at} pour finir ta mission" %></p>
       <p><%= "Si tu réussi, tu pourras obtenir #{@mission.point} points !" %></p>
 
       <% if @mission.to_do?  %>
@@ -24,8 +23,7 @@
 
     <% else %>
     <!-- VUE PARENT -->
-      <p><%= "Assigné à #{@mission.user.name} pour le #{@mission.start_at}" %></p>
-      <p>Fin de la mission prévue le : <%= @mission.end_at %></p>
+      <p><%= "Assigné à #{@mission.user.name}"%></p>
       <p>Nombres de points rapportés : <%= @mission.point %></p>
       <p><% if @mission.to_do? %>
           <%= "Mission toujours en cours" %>

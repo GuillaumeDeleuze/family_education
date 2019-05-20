@@ -8,7 +8,7 @@
 
   <% @partnairs.each do |partnair| %>
     <div class='partnair-card'>
-      <%= image_tag 'escap.jpg', class: 'card-img'%>
+      <%= link_to image_tag('escap.jpg'), partnair_path(partnair), class: 'card-img'%>
       <div class="partnair-infos">
         <h2><%= partnair.name %></h2>
         <p><%= partnair.description %></p>

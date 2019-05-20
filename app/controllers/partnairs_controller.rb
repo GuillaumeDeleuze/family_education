@@ -4,6 +4,8 @@ class PartnairsController < ApplicationController
   end
 
   def show
+    @partnair = Partnair.find(params[:id])
+    authorize @partnair
   end
 
   def new

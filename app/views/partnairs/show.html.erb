@@ -1,2 +1,11 @@
-<h1><%= partnair.name %></h1>
-<p><%= partnair.description %></p>
+<div class="home page-container page-container--center">
+
+  <%= render 'shared/navbar' %>
+
+        <h1><%= @partnair.name %></h1>
+        <p><%= @partnair.description %></p>
+        <%= "12% de réduction avec le code promo 'Merci Widou'" %>
+        <%= "www.#{@partnair.name}.fr" %>
+
+  <%= render 'shared/footer' %>
+</div>
