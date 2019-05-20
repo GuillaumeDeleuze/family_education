@@ -62,6 +62,7 @@ class MissionsController < ApplicationController
 
   def destroy
     @mission.destroy
+    redirect_to family_missions_path(current_user.family.id)
   end
 
   private

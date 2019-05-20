@@ -13,8 +13,12 @@ class UsersController < ApplicationController
 
   def create
     @child = User.new(params[:child])
-    @child.save
     authorize @child
-    redirect_to childrens_path
+    if @child.save
+      UserMailer.welcome(@child).deliver_now
+      redirect_to childrens_path
+    else 
+      render :new
+    end
   end
 end

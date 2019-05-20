@@ -51,6 +51,8 @@ class RewardsController < ApplicationController
 
   def destroy
     @reward.destroy
+    redirect_to family_rewards_path(current_user.family.id)
+
   end
 
   private
