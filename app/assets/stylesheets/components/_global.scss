@@ -93,7 +93,7 @@ a {
   }
 
 
-  @media (min-width: 320) {
+  @media(max-width: 320) {
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
@@ -105,14 +105,37 @@ a {
   }
 
 
-
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin:10px;
-    grid-gap: 5px;
-    text-decoration: none;
+  @media(max-width: 992px) {
+    .dashboard-grid{
+        display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin:10px;
+      grid-gap: 5px;
+      text-decoration: none;
     }
+  }
+  
+  @media(max-width: 768px) {
+    .dashboard-grid {
+     display: grid;
+      grid-template-columns: 1fr;
+      margin:10px;
+      grid-gap: 5px;
+      text-decoration: none;
+    }
+  }
+
+
+  @media(min-width: 375px) {
+    .dashboard-grid {
+     display: grid;
+      grid-template-columns: repeat(2,1fr);
+      margin:10px;
+      grid-gap: 5px;
+      text-decoration: none;
+    }
+  }
+
 
 .button-widou {
     background-color: #057F9B;
