@@ -173,6 +173,7 @@ a {
     font-family: 'Maven Pro', sans-serif
 }
 
+
 .button-children {
     background-color: #057F9B;
     color: white;
@@ -467,19 +468,25 @@ a {
     }
 }
 
-.notif-mission {
+
+.mission-notif {
+    position:relative;
+}
+
+
+.notification {
     background-color: #FF4221;
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
     color: white;
-    font-size: 13px;
-    position: relative;
-    bottom: 180px;
-    left: 356px;
+    font-size: 11px;
+    position: absolute;
+    top: -6px;
+    right: -5px;
 }
 
 .validation-buttons {
