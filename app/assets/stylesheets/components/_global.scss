@@ -238,6 +238,13 @@ a {
 
 }
 
+.missions__CTA {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+}
+
 
 .rewards-list {
     display:flex;
