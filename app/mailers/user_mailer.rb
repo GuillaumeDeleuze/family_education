@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
 
-  def welcome(child)
-    @child = child 
+  def welcome(user)
+    @child = user 
 
     mail(to: @child.email, subject: 'Bienvenue sur Widou')
   end
