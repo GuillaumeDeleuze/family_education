@@ -173,6 +173,13 @@ a {
     font-family: 'Maven Pro', sans-serif
 }
 
+.button-dashboard:hover {
+   text-decoration: none;
+    color: white;
+   
+}
+
+
 
 .button-children {
     background-color: #057F9B;
@@ -523,3 +530,9 @@ p {
     font-weight: 500;
     color: black;
 }
+
+.mission-status-accordion:hover {
+    color: black;
+    text-decoration: none;
+}
+  
