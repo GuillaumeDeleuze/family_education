@@ -6,7 +6,7 @@
     <h1><%= @reward.name %></h1>
     <%= simple_form_for [@family, @reward] do |f| %>
       <%= f.input :name, label: 'Nom de la récompense', placeholder: 'Nom de la récompense' %>
-      <%= f.input :price, input_html: { class: 'input'}, label: 'Coût', collection: 1..50, include_blank: false %>
+      <%= f.input :price, input_html: { class: 'input'}, label: 'Seuil à atteindre', collection: 1..50, include_blank: false %>
       <%= f.button :submit, 'Modifier la récompense', class: 'btn button-subscribe' %>
    <% end %>
 
