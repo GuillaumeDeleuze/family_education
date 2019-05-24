@@ -29,7 +29,7 @@
         <%= f.input :point, input_html: { class: 'input' },  label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false, class: 'btn button-subscribe' %>
         <%= f.input :repition, input_html: { class: 'input'}, label: 'Récurrence (chaque jour)?', as: :select, include_blank: false, collection: [['Oui', true],['Non', false]] %>
         <%= f.association :user, input_html: { class: 'input'}, label: 'Quel enfant?', collection: @children, include_blank: false %>
-      <%= f.button :submit, class: 'btn button-subscribe' %>
+      <%= f.button :submit, 'Créer la mission', class: 'btn button-subscribe' %>
     <% end %>
   </div>
 
