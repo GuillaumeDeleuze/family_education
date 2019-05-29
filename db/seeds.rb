@@ -1,11 +1,11 @@
 require 'faker'
 
 puts "delete db"
-Mission.destroy_all
+# Mission.destroy_all
 Partnair.destroy_all
-Reward.destroy_all
-User.destroy_all
-Family.destroy_all
+# Reward.destroy_all
+# User.destroy_all
+# Family.destroy_all
 
 
 # puts 'Creating 2 family'
@@ -63,17 +63,30 @@ Family.destroy_all
 # end
 
 
-puts 'Finished'
-puts 'Creating 5 fake partnairs...'
-5.times do
-  partnair = Partnair.new(
-    name: Faker::TvShows::Simpsons.location,
-    description: Faker::TvShows::Simpsons.quote,
-    price: rand(5..10)
-  )
-  partnair.save!
-end
-puts 'Finished!'
+
+Partnair.create!(
+  name: "Arkose Bordeaux", 
+  description:"C’est dans un ancien chai centenaire qu’Arkose pose ses blocs et crée son blocpark à Bordeaux. Pas besoin de savoir grimper pour y mettre un pied, ce secret spot abrite un véritable lieu de vie locale. Immersion dans le « new outside ».
+
+  Le blocpark invite les esprits libres dans la nouvelle culture de grimpe. Blocs d’escalade, restaurant et bar éthiques, espace sauna, zone de chill et « work friendly », exposition d’artistes.",
+  website: "https://bordeaux.arkose.com/"
+)
+
+Partnair.create!(
+  name: "Escape Hunt", 
+  description: "1- Entrez dans un nouvel univers 2- Faites-vous enfermer et trouvez les indices. 3-Jouez contre la montre et échappez-vous ! 5 THÈMES UNIQUES ET IMMERSIFS!
+  ÊTES-VOUS PRÊT À RELEVER LE DÉFI?",
+  website: "https://escapehunt.com/fr/bordeaux/"
+)
+
+Partnair.create!(
+  name: "Wave Surf Café", 
+  description: "La vague indoor du Wave Surf Café, rapproche l’océan et la montagne des centres ville de Bordeaux et Perpignan, et s'apparente à une rampe de skate infinie. Pratiquez votre sport de glisse préféré en retrouvant les sensations du surf, bodyboard, skimboard, wakeboard, snowboard et skate, grâce à nos planches spécifiques (bodyboard et surf).",
+  website: "http://www.wave-surf-cafe.fr/"
+)
+
+
+
 
 # puts 'Creating 10 fake rewards...'
 # 10.times do

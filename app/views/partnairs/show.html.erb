@@ -4,8 +4,7 @@
 
         <h1><%= @partnair.name %></h1>
         <p><%= @partnair.description %></p>
-        <%= "12% de réduction avec le code promo 'Merci Widou'" %>
-        <%= "www.#{@partnair.name}.fr" %>
+        <%= link_to @partnair.website, @partnair.website %>
 
   <%= render 'shared/footer' %>
 </div>

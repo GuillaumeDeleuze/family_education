@@ -6,15 +6,33 @@
   
   <%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
 
-  <% @partnairs.each do |partnair| %>
-    <div class='partnair-card'>
-      <%= link_to image_tag('escap.jpg'), partnair_path(partnair), class: 'card-img'%>
-      <div class="partnair-infos">
-        <h2><%= partnair.name %></h2>
-        <p><%= partnair.description %></p>
-      </div>
+
+  <div class='partnair-card'>
+    <%= link_to image_tag('arkose-bordeaux.jpg'), partnair_path(@arkose_bx), class: 'card-img'%>
+    <div class="partnair-infos">
+      <h2><%= @arkose_bx.name %></h2>
+      <p>Néo-urbains, venez tester la surface grimpable de 850m2 aux 180 blocs de tout niveau. Ici le train-train n’a pas sa place, le blocpark se réinvente au quotidien pour toujours plus de challenge et de fun.
+  Avec plus de 5 000 prises, une zone de traversée, ainsi qu’un pan Güllich, le blocpark est l’endroit idéal pour s’entrainer et grimper entre potes dans une ambiance détente dans un lieu chargé d’histoire.</p>
     </div>
-  <% end %>
+  </div>
+  
+  <div class='partnair-card'>
+    <%= link_to image_tag('Escape_Hunt.jpg'), partnair_path(@escape_hunt_bx), class: 'card-img'%>
+    <div class="partnair-infos">
+      <h2><%= @escape_hunt_bx.name %></h2>
+      <p>L’Escape Game Numéro 1 à Bordeaux - Escape Hunt
+  Escape Hunt est le plus grand Escape Game de Bordeaux avec 11 salles et 5 thèmes de jeu sur deux établissements de 10h à 00h 7 jours sur 7.</p>
+    </div>
+  </div>
+  
+  <div class='partnair-card'>
+    <%= link_to image_tag('weve_surf.jpg'), partnair_path(@wave_bx), class: 'card-img'%>
+    <div class="partnair-infos">
+      <h2><%= @wave_bx.name %></h2>
+      <p>LE WAVE SURF CAFE, UN BAR CONCEPTUEL POUR PRATIQUER TOUTE L'ANNEE LE SURF ET LE BODYBOARD SUR VAGUE ARTIFICIELLE  EN TOUTE CONVIVIALITE</p>
+    </div>
+  </div>
+
     
 
 
