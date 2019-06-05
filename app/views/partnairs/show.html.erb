@@ -2,9 +2,11 @@
 
   <%= render 'shared/navbar' %>
 
+      <div class="partnair-description">
         <h1><%= @partnair.name %></h1>
         <p><%= @partnair.description %></p>
         <%= link_to "Cliquez sur ce lien pour plus d'information", @partnair.website %>
-
+      </div>
+      
   <%= render 'shared/footer' %>
 </div>
