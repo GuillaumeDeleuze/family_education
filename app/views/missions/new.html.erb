@@ -2,9 +2,8 @@
   <%= render 'shared/navbar' %>
 
 
-  <% suggestions = ["Arrêter de fumer", "Faire un Top 1","Sortir les poubelles", "Nourrir le chat", "Boutter les Anglais hors de Gaulle", "Ranger sa chambre", "Être gentil.le"] %>
-
-
+  <% suggestions = ["faire son lit", "vider le lave vaisselle", "sortir les poubelles", "faire ses devoirs", "ramasser son linge sale", "ranger sa chambre", "ranger ses affaires au bon endroit", "nettoyer sa douche", "mettre la table", "vider la caisse du chat", "sortir le chien", "aller chercher le pain", "tondre la pelouse", "nourrir son animal domestique"] %>
+ 
     
   <div class="suggestion-container">
     <h1>Suggestions</h2>
@@ -13,7 +12,7 @@
 
       <% suggestions.each do |suggestion| %>
         <div class="button-suggestion">
-            <%= suggestion %>
+            <%= suggestion.capitalize %>
       </div>
       <% end %>
     </div>
