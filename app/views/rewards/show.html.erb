@@ -18,7 +18,7 @@
         <% elsif @reward.done %>
           <%= "Hep hep tu as déjà pris tout ça petit garnement" %>
         <% else %>
-          <%= "Waouhhh calm down il te manque encore #{@reward.price - current_user.point} points" %>
+          <%= "Il te manque encore #{@reward.price - current_user.point} points" %>
         <% end %>
 
     <!-- VUE PARENT -->
