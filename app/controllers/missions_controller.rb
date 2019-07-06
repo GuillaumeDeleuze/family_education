@@ -1,5 +1,6 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
+  after_action :send_welcome_email, only: [:new]
 
   def index
     @family = User.where(family: current_user.family)
@@ -74,5 +75,11 @@ class MissionsController < ApplicationController
 
   def mission_params
     params.require(:mission).permit(:user_id, :start_at, :end_at, :point, :name, :status, :repition)
+  end
+
+  def send_welcome_email
+    if ((User.last.missions.first == nil) && (User.last.child? == true) && (User.last.family.id == current_user.family.id) && (User.last.created_at.day == Time.current.day)) 
+      UserMailer.welcome(User.last).deliver_now!
+    end
   end
 end

@@ -32,4 +32,7 @@ class ChildrenController < ApplicationController
   # def children_params
   #   params.require(:children).permit
   # end
+
+
+
 end
