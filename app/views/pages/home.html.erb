@@ -1,9 +1,9 @@
 <div class="home page-container page-container--center">
     <%= render 'shared/navbar' %>
 
-    <div class="welcome-connection"> 
-        <h1 class="title">Bienvenue sur Widou</h1> 
-        <p class="intro"> 
+    <div class="welcome-connection">
+      <%= link_to image_tag('Image d’iOS.jpg'),  class: 'card-img'%>
+        <p class="intro">
             L’application qui facilite votre quotidien et la communication dans la famille.
         </p>
         <h2 id="subscribe"> <%= link_to "S'inscrire",  new_family_path, :class => "button-subscribe" %> </h2>
