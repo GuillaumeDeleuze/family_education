@@ -1,6 +1,6 @@
 html {
    height: 100%;
-    
+
 }
 
 body {
@@ -55,7 +55,7 @@ body {
     margin: 2px;
     padding: 0px 61px;
     text-align: center;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 
 h1 {
@@ -64,12 +64,12 @@ h1 {
     font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 a {
     font-family: 'Maven Pro', sans-serif;
-   
+
 }
 
 .children-grid {
@@ -81,7 +81,7 @@ a {
 }
 
 .suggestion-container {
-    
+
 }
 
 .suggestion-grid {
@@ -100,7 +100,7 @@ a {
       margin:10px;
       grid-gap: 5px;
       text-decoration: none;
-      
+
     }
   }
 
@@ -114,7 +114,7 @@ a {
       text-decoration: none;
     }
   }
-  
+
   @media(max-width: 768px) {
     .dashboard-grid {
      display: grid;
@@ -176,7 +176,7 @@ a {
 .button-dashboard:hover {
    text-decoration: none;
     color: white;
-   
+
 }
 
 
@@ -234,7 +234,7 @@ a {
     text-transform: uppercase;
     text-decoration: none;
     font-family: 'Maven Pro', sans-serif;
-    border: 0;   
+    border: 0;
 }
 
 
@@ -248,7 +248,7 @@ a {
 .missions__CTA {
     display: flex;
     flex-direction: column;
-    
+
     justify-content: space-between;
 }
 
@@ -282,7 +282,7 @@ a {
     flex-grow: 1;
     padding: 10px;
     flex-direction: column;
-    
+
     p {
         margin:0;
     }
@@ -312,7 +312,7 @@ a {
     flex-grow: 1;
     padding: 5px;
     flex-direction: column;
-    
+
     p {
         margin:0;
     }
@@ -320,7 +320,7 @@ a {
     a {
         color:white;
     }
-    
+
 }
 
 .reward__cta {
@@ -332,7 +332,7 @@ a {
     .button-small:first-child {
         margin-right: 5px;
     }
-    
+
 }
 
 .ongoing-mission {
@@ -400,7 +400,7 @@ a {
     .button-small:first-child {
         margin-right: 5px;
     }
-    
+
 }
 
 
@@ -511,7 +511,7 @@ a {
 
     .btn-success {
         color:white;
-    
+
     }
 }
 
@@ -535,4 +535,4 @@ p {
     color: black;
     text-decoration: none;
 }
-  
+
