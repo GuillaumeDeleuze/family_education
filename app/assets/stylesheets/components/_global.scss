@@ -18,6 +18,7 @@ body {
 
 .page-container--center {
     justify-content: space-between;
+    align-items: center;
 }
 
 .main-content {
@@ -190,7 +191,7 @@ a {
     font-weight: 600;
     line-height: 37px;
     letter-spacing: 1px;
-    padding: 0px;
+    padding: 5px;
     margin:10px;
     text-align: center;
     margin-top: 7px;
@@ -535,4 +536,23 @@ p {
     color: black;
     text-decoration: none;
 }
+
+
+.button-initialize-password {background-color: #057F9B;
+    color: white;
+    border-radius: 19px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 1px;
+    margin: 5px;
+    padding: 0px 27px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 16px;
+    text-decoration: none;
+    font-family: 'Maven Pro', sans-serif;
+
+  }
 
