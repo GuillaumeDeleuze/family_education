@@ -8,112 +8,48 @@ Partnair.destroy_all
 # Family.destroy_all
 
 
-# puts 'Creating 2 family'
-# family = Family.new(
-#   id: 1,
-#   )
-#   family.save!
-
-# family = Family.new(
-#   id: 2,
-#   )
-#   family.save!
-
-# puts 'Finished'
-
-# puts 'Creating 2 fake users...'
-
-
-# user = User.new(
-#    family_id: 1,
-#    name: Faker::TvShows::BreakingBad.character,
-#    password: "123soleil",
-#    email: "toto@gmail.com",
-#    created_at: "2019-04-03 14:44:28",
-#    updated_at: "2019-04-03 14:44:28"
-#  )
-#  user.save!
-
-# user = User.new(
-#    family_id: 2,
-#    name: Faker::TvShows::BreakingBad.character,
-#    password: "123soleil",
-#    email: "titi@gmail.com",
-#    created_at: "2019-04-03 14:44:28",
-#    updated_at: "2019-04-03 14:44:28"
-#  )
-#  user.save!
-
-# puts 'Finished!'
-
-
-# puts 'Creating 4 children'
-# 4.times do
-#   user = User.new(
-#    family_id: rand(1..2),
-#    name: Faker::TvShows::Simpsons.character,
-#    point: 0,
-#    password: "123soleil",
-#    email: Faker::Internet.email,
-#    child: true,
-#    created_at: "2019-05-03 14:44:28",
-#    updated_at: "2019-05-03 14:44:28"
-#   )
-#   user.save!
-# end
-
-
 
 Partnair.create!(
-  name: "Arkose Bordeaux", 
-  description:"C’est dans un ancien chai centenaire qu’Arkose pose ses blocs et crée son blocpark à Bordeaux. Pas besoin de savoir grimper pour y mettre un pied, ce secret spot abrite un véritable lieu de vie locale. Immersion dans le « new outside ».
+  name: "Urban Quest Bordeaux", 
+  description:"Code promo de 15% pour réserver une partie chez nous.
 
-  Le blocpark invite les esprits libres dans la nouvelle culture de grimpe. Blocs d’escalade, restaurant et bar éthiques, espace sauna, zone de chill et « work friendly », exposition d’artistes.",
-  website: "https://bordeaux.arkose.com/"
+  Découvrez nos jeux urbains !
+  
+  A la croisé entre un escape game et un jeu de piste connecté, constituez votre équipe de 2 à 5 joueurs et tentez de réussir le plus de challenge et 
+  de résoudre le maximum d’énigmes dans la ville de Bordeaux. Vous avez 60 minutes pour récolter le plus de points. Que la meilleure équipe gagne ! 
+  L'activité est adapté à partir de 10 ans avec adulte et 14 ans sans adulte dans l'équipe.
+  La durée totale de l’activité dure 1h30 environ avec : 
+  – 15 min de briefing
+  – 60 min de jeu dans la ville
+  – 15 min de debriefing",
+  website: "https://urbanquest.fr/jeux-urbains/bordeaux-challenge/",
+  code: "widouEH15"
 )
 
 Partnair.create!(
-  name: "Escape Hunt", 
-  description: "1- Entrez dans un nouvel univers 2- Faites-vous enfermer et trouvez les indices. 3-Jouez contre la montre et échappez-vous ! 5 THÈMES UNIQUES ET IMMERSIFS!
-  ÊTES-VOUS PRÊT À RELEVER LE DÉFI?",
-  website: "https://escapehunt.com/fr/bordeaux/"
+  name: "Escape Hunt Bordeaux", 
+  description: "Code promo de 15% pour réserver une partie chez nous.
+
+  Ce code est valable dans nos deux établissements : 
+  Escape Hunt Gare Saint-Jean
+  - Jack L’Eventreur (3 salles)
+  - Le Manoir d’H.H.Holmes (1 salle) déconseillé au moins de 16 ans
+  - Meurtre au port de la lune (2 salles) avec un mode enfant disponible (7 à 12 ans sans adulte)
+  - Le casse de Saint-Emilion (2 salles)
+  
+  Escape Hunt Tourny
+  - Le Protocole (3 salles) déconseillé au moins de 14 ans",
+  website: "https://escapehunt.com/fr/bordeaux/",
+  code: "widouUQ15"
 )
 
 Partnair.create!(
-  name: "Wave Surf Café", 
-  description: "La vague indoor du Wave Surf Café, rapproche l’océan et la montagne des centres ville de Bordeaux et Perpignan, et s'apparente à une rampe de skate infinie. Pratiquez votre sport de glisse préféré en retrouvant les sensations du surf, bodyboard, skimboard, wakeboard, snowboard et skate, grâce à nos planches spécifiques (bodyboard et surf).",
-  website: "http://www.wave-surf-cafe.fr/"
+  name: "So Nice Surf School", 
+  description: "Nos proposons des cours de surf, se déroulant sur la magnifique plage du Porge Océan. 
+  Nous choisissons les spots les moins fréquentés pour vous permettre de progresser en toute sécurité, sur des vagues adaptées. 
+  Différentes formules sont possibles : séance découverte 35 euros, stage 3 séances (90 euros), stage 5 séances (140 euros) : les cours durent deux heures, la pratique se fait dans un cours collectif de 8 personnes maximum, encadré par un moniteur diplômé d’État, le matériel est inclus.
+  Nous proposons également des semaines dans notre surfcamp situé à proximité de la plage, pour adolescents de 14 à 17 ans en juillet, et pour adultes en août.
+  Promo : - 5 % sur les cours de surf collectifs (séances découvertes et stages 3 et 5 séances), et un stick solaire 50+ offert pour l'achat d'une semaine de surfcamp (ado en juillet ou adulte en août)",
+  website: "https://sonicesurfschool.com/",
+  code: ""
 )
-
-
-
-
-# puts 'Creating 10 fake rewards...'
-# 10.times do
-#   reward = Reward.new(
-#     user_id: rand(3..6),
-#     name: Faker::Cannabis.buzzword,
-#     price: rand(1..10)
-#   )
-#   reward.save!
-# end
-# puts 'Finished!'
-
-
-# d1 = DateTime.new(2019, 3, 16)
-# d2 = DateTime.new(2019, 5, 16)
-
-# puts 'Creating 10 fake missions...'
-# 10.times do
-#   mission = Mission.new(
-#     name: Faker::House.room,
-#     user_id: rand(3..6),
-#     point: rand(1..3),
-#     start_at: d1,
-#     end_at: d2,
-#   )
-#   mission.save!
-# end
-# puts 'Finished!'
-
-

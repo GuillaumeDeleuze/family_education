@@ -1,9 +1,9 @@
 class PartnairsController < ApplicationController
   def index
     @partnairs = policy_scope(Partnair)
-    @wave_bx = Partnair.find_by_name("Wave Surf Café")
-    @arkose_bx = Partnair.find_by_name("Arkose Bordeaux")
-    @escape_hunt_bx = Partnair.find_by_name("Escape Hunt")
+    @so_nice_surf = Partnair.find_by_name("So Nice Surf School")
+    @urban_quest_bx = Partnair.find_by_name("Urban Quest Bordeaux")
+    @escape_hunt_bx = Partnair.find_by_name("Escape Hunt Bordeaux")
   end
 
   def show

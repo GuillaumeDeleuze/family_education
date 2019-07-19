@@ -15,6 +15,7 @@ class RewardsController < ApplicationController
     @family = Family.find(params[:family_id])
     @reward = Reward.new
     @children = User.where(family: current_user.family).where(child: true)
+    @partnairs = Partnair.all.collect(&:name)
     authorize @reward
   end
 
