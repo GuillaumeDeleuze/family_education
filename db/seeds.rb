@@ -53,3 +53,15 @@ Partnair.create!(
   website: "https://sonicesurfschool.com/",
   code: ""
 )
+
+Partnair.create!(
+  name: "REIV", 
+  description: "Traversez un manoir hanté, partez à la découverte des fonds marins, montez sur un ring de boxe, jouez sur le rythme de la musique, défiez le temps…
+  Découvrez notre catalogue régulièrement actualisés avec un contenu varié d’une vingtaine de jeux aux multiples univers. Il y a en a pour tous les goûts !
+  MAIS AUSSI… UN ESPACE CAFÉ 
+  Pour se détendre et se retrouver entre deux parties, REIV propose également un espace café avec retransmission de séries, films et d’e-sport. 
+  Le champ des possibles est ouvert chez REIV, choisissez un autre monde.
+  Profitez d'une offre promotionnelle de -15% sur le tarif standard du lundi ou vendredi de 17h à 21h.",
+  website: "https://www.reiv.eu/",
+  code: "widoureiv15"
+)

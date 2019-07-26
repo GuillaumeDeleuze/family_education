@@ -6,7 +6,7 @@
         <h1><%= @partnair.name %></h1>
         <p><%= @partnair.description.gsub(/\n/, '<br/>').html_safe %></p>
         <%= link_to "Cliquez sur ce lien pour plus d'information", @partnair.website %>
-        <%= link_to "Créer une récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
+        <%= link_to "Ajouter comme récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
         <h4><%= "Code promo : #{@partnair.code}" %></h4>
       </div>
       
