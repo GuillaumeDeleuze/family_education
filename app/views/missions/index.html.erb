@@ -32,7 +32,7 @@
                     <%= link_to mission_path(mission) do %>
                       <%= mission.name.capitalize %>
                       <br>
-                      Nombre de points rapportés par la mission : <%= mission.point %>
+                      <p>Nombre de points rapportés par la mission : <%= mission.point %></p>
                     <% end %>
                   </div>
                   <% end %>
@@ -93,7 +93,6 @@
           </div>
         </div>
 
-  <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
 
         <% else %>
 

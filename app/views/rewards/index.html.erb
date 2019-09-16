@@ -68,13 +68,19 @@
    <div class="rewards-list">
       <% @family_rewards.each do |reward| %>
         <% if reward.name.strip != "" %>
-          <div class="reward">
-            <div class="reward__name">
-              <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
-              <p>Nombre de points requis <%= reward.price %></p>
-            </div>
+          <%= link_to reward_path(reward) do %>
+            <div class="reward">
+              <div class="reward__name">
+                <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
+                <p>Nombre de points requis <%= reward.price %></p>
+              </div>
+          <% end %>
               <div class="reward__cta">
+              <% if reward.done? %>
+                <%= link_to "Information", reward_path(reward), class: 'button-small' %>
+              <% else %>
                 <%= link_to "Modifier", edit_reward_path(reward), class: 'button-small' %>
+              <% end %>
                 <%= button_to "Supprimer", reward, class: 'button-small', :method => :delete %>
               </div>     
           </div>
