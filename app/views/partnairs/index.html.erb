@@ -6,42 +6,50 @@
   
   <%= link_to "Continuer vers la création d'une nouvelle récompense", new_family_reward_path(current_user.family.id), class: 'link' %>
 
-
+<%= link_to partnair_path(@urban_quest_bx), :action => 'go' do %>
   <div class='partnair-card'>
-    <%= link_to image_tag('urban_quest_bx.png'), partnair_path(@urban_quest_bx), class: 'card-img'%>
+    <%= image_tag 'urban_quest_bx.png', class: 'card-img'%>
     <div class="partnair-infos">
       <h2><%= @urban_quest_bx.name %></h2>
       <p>A la croisé entre un escape game et un jeu de piste connecté, constituez votre équipe et tentez de réussir résoudre le maximum d’énigmes dans la ville de Bordeaux.</p>
     </div>
   </div>
-  
+<% end %>
+
+<%= link_to partnair_path(@escape_hunt_bx), :action => 'go' do %>
   <div class='partnair-card'>
-    <%= link_to image_tag('Escape_Hunt.jpg'), partnair_path(@escape_hunt_bx), class: 'card-img'%>
+    <%= image_tag 'Escape_Hunt.jpg', class: 'card-img'%>
     <div class="partnair-infos">
       <h2><%= @escape_hunt_bx.name %></h2>
       <p>Escape Hunt est l'escape game numéro 1 à Bordeaux ! Vous voyagerez dans le temps afin de résoudre des énigmes dans l'une de nos 11 salles de jeu.</p>
     </div>
   </div>
-  
+<% end %>
+
+<%= link_to partnair_path(@so_nice_surf), :action => 'go' do %>
   <div class='partnair-card'>
-    <%= link_to image_tag('so_nice_surf.png'), partnair_path(@so_nice_surf), class: 'card-img'%>
+    <%= image_tag 'so_nice_surf.png', class: 'card-img'%>
     <div class="partnair-infos">
       <h2><%= @so_nice_surf.name %></h2>
       <p>So Nice Surf School est une école de surf conviviale au Porge Océan, nichée dans un cadre magnifique et un spot préservé à une heure de Bordeaux.</p>
     </div>
   </div>
-  
+<% end %>
+
+<%= link_to partnair_path(@reiv), :action => 'go' do %>
   <div class='partnair-card'>
-    <%= link_to image_tag('reiv.jpg'), partnair_path(@reiv), class: 'card-img'%>
+    <%= image_tag 'reiv.jpg', class: 'card-img'%>
     <div class="partnair-infos">
       <h2><%= @reiv.name %></h2>
       <p>En plein coeur de Bordeaux, REIV vous propose de multiples expériences en réalité virtuelle sur 750m2 : laser game, escape games et des jeux divers et variés. 
-À venir découvrir seul ou en groupe !</p>
+          À venir découvrir seul ou en groupe !</p>
     </div>
   </div>
+<% end %>
 
     
 
+  <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
 
   <%= render 'shared/footer' %>
 </div>

@@ -8,7 +8,7 @@
     <% if current_user.child? %>
     <!-- VUE ENFANT -->
       <p>Début de la mission le : <%= @mission.start_at %></p>
-      <p><%= "Si tu réussi, tu pourras obtenir #{@mission.point} points !" %></p>
+      <p><%= "Si tu réussis, tu pourras obtenir #{@mission.point} #{(@mission.point == 1) ? "point" : "points" } !" %></p>
 
       <% if @mission.to_do?  %>
         <%= simple_form_for @mission do |f| %>
@@ -49,6 +49,7 @@
 
   <!-- 3 états différents : en cours(to_do[0])  / a valider(pending[1]) / valider(done[2]) -->
 
+    <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
 
   <%= render 'shared/footer' %>
 </div>

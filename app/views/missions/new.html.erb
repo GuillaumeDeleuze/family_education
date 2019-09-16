@@ -4,7 +4,6 @@
 
   <% suggestions = ["faire son lit", "vider le lave vaisselle", "sortir les poubelles", "faire ses devoirs", "ramasser son linge sale", "ranger sa chambre", "ranger ses affaires au bon endroit", "nettoyer sa douche", "mettre la table", "vider la caisse du chat", "sortir le chien", "aller chercher le pain", "tondre la pelouse", "nourrir son animal domestique"] %>
  
-    
   <div class="suggestion-container">
     <h1>Suggestions</h2>
 
@@ -24,7 +23,7 @@
     
     <div class="family-creation-form">
       <%= simple_form_for [@family, @mission] do |f| %>
-        <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission'%>
+        <%= f.input :name, label: 'Nom de la mission', placeholder: 'Nom de la mission', presence: true %>
         <%= f.input :point, input_html: { class: 'input' },  label: 'Nombre de point(s) gagné(s)', collection: 1..20, include_blank: false, class: 'btn button-subscribe' %>
         <%= f.input :repition, input_html: { class: 'input'}, label: 'Récurrence (chaque jour)?', as: :select, include_blank: false, collection: [['Oui', true],['Non', false]] %>
         <%= f.association :user, input_html: { class: 'input'}, label: 'Quel enfant?', collection: @children, include_blank: false %>
@@ -33,6 +32,8 @@
   </div>
 
   </div>
+
+  <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
 
   <%= render 'shared/footer' %>
 </div>

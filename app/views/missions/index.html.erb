@@ -27,7 +27,7 @@
                 
                 <% @current_user.missions.each do |mission| %>
                 <div class="">
-                  <% if mission.status == 'to_do' %>
+                  <% if mission.status == 'to_do' && mission.name.strip != "" %>
                   <div class ="ongoing-mission-children__CTA">
                     <%= link_to mission_path(mission) do %>
                       <%= mission.name.capitalize %>
@@ -55,7 +55,7 @@
             <div id="collapseTwo" class="collapse hide" data-parent="#accordion">
               <div class="missions-list">
                 <% @current_user.missions.each do |mission| %>
-                  <% if mission.status == 'pending' %>
+                  <% if mission.status == 'pending' && mission.name.strip != "" %>
                     <div class ="ongoing-mission-children__CTA">  
                       <%= link_to mission_path(mission) do %>
                         <%= mission.name.capitalize %>
@@ -92,6 +92,9 @@
             </div>
           </div>
         </div>
+
+  <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
+
         <% else %>
 
       <!-- VUE PARENT -->
@@ -117,7 +120,7 @@
           <% end %>
             <div class="missions-list">
               <% @family_missions.each do |mission| %>
-                <% if mission.status == 'pending' %>
+                <% if mission.status == 'pending' && mission.name.strip != "" %>
                   <%= link_to mission_path(mission) do %>
                   <div class ="ongoing-mission-parents__CTA">
                     <%= "#{mission.name.capitalize} (#{mission.user.name})"%>
@@ -128,6 +131,7 @@
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
@@ -146,7 +150,7 @@
             
             <% @family_missions.each do |mission| %>
               <div class="card-body ongoing-mission">
-                <% if mission.status == 'to_do' %>
+                <% if mission.status == 'to_do' && mission.name.strip != "" %>
                   <div class ="ongoing-mission__cta">
                     <%= link_to mission_path(mission) do %>
                         <%= "Pour #{mission.user.name} : #{mission.name.capitalize}" %>
@@ -161,10 +165,35 @@
             <% end %>
           </div>
         </div>
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <h1 data-toggle="collapse" data-target="#collapseThree" href="#collapse1">
+                Missions accomplies
+              </h1>
+            </h2>
+          </div>
+            <div id="collapseThree" class="collapse hide" data-parent="#accordion">
+              <div class="missions-list">
+                <% @family_missions.each do |mission| %>
+                  <% if mission.status == 'done' %>
+                    <%= link_to mission_path(mission) do %>
+                    <div class ="ongoing-mission-parents__CTA">
+                      <%= "#{mission.name.capitalize} (#{mission.user.name})"%>
+                    </div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
 
       <% end %>
+
+  <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
+
   </div>
 
 <%= render 'shared/footer' %>

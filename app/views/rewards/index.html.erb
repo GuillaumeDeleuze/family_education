@@ -19,7 +19,7 @@
         <div id="collapseOne" class="collapse show" data-parent="#accordion">
           <div class="rewards-list">
             <% @current_user.rewards.order('price DESC').each do |reward| %>
-              <% if reward.done? == false %>
+              <% if reward.done? == false && reward.name.strip != "" %>
                 <%= link_to reward_path(reward) do %>
                   <div class="available-reward">
                     <%= reward.name.capitalize %>
@@ -67,16 +67,18 @@
 
    <div class="rewards-list">
       <% @family_rewards.each do |reward| %>
-      <div class="reward">
-        <div class="reward__name">
-          <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
-          <p>Nombre de points requis <%= reward.price %></p>
-        </div>
-          <div class="reward__cta">
-            <%= link_to "Modifier", edit_reward_path(reward), class: 'button-small' %>
-            <%= button_to "Supprimer", reward, class: 'button-small', :method => :delete %>
-          </div>     
-      </div>
+        <% if reward.name.strip != "" %>
+          <div class="reward">
+            <div class="reward__name">
+              <%= "#{reward.name.capitalize} (#{reward.user.name})" %>
+              <p>Nombre de points requis <%= reward.price %></p>
+            </div>
+              <div class="reward__cta">
+                <%= link_to "Modifier", edit_reward_path(reward), class: 'button-small' %>
+                <%= button_to "Supprimer", reward, class: 'button-small', :method => :delete %>
+              </div>     
+          </div>
+        <% end %>
       <% end %>
   </div>
     
@@ -84,6 +86,7 @@
 
 <!-- Lien vers ajouter une récompense => amène dans un premier temps sur la liste des partenaires -->
 
+  <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
 
  <%= render 'shared/footer' %>
 </div>

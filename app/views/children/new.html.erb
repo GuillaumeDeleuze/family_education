@@ -6,8 +6,8 @@
          <%= simple_form_for @child do |f| %>
         <%= f.input :name, label: 'Nom', placeholder: 'Son petit nom' %>
         <%= f.input :birth_date, input_html: { class: 'input' }, label: 'Date de naissance', as: :date,
-                    start_year: Date.today.year - 25,
-                    end_year: Date.today.year - 7,
+                    start_year: Date.today.year - 17,
+                    end_year: Date.today.year - 11,
                     order: [:day, :month, :year] %>
         <%= f.input :email, 
                     label: 'Email de votre Enfant',
@@ -24,6 +24,7 @@
     <% end %>
     </div>
   
+    <button type="button" class="btn"><%= link_to "Retour", :back,  class: 'btn button-subscribe' %></button>
 
     <%= render 'shared/footer' %>
 </div>
