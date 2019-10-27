@@ -1,0 +1,22 @@
+<div class="home page-container page-container--center">
+  <%= render 'shared/navbar' %> 
+
+<% mission_name = [] %>
+    <h1>Liste des missions</h1>
+      <% @missions.each do |mission| %>
+        <% mission_name << mission.name.strip %>
+      <% end %>
+      <% total_mission = mission_name.reduce(Hash.new(0)) { |a, b| a[b] += 1; a } %>
+      <%= total_mission %>
+
+<% reward_name = [] %>
+    <h1>Liste des récompenses</h1>
+      <% @rewards.each do |reward| %>
+        <% reward_name << reward.name.strip %>
+      <% end %>
+      <% total_reward = reward_name.reduce(Hash.new(0)) { |a, b| a[b] += 1; a } %>
+      <%= total_reward %>
+
+  <%= render 'shared/footer' %>
+</div>
+

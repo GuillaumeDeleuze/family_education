@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get '/widou-analytics' => 'pages#analytics'
 
   resources :users, only: [:index]
 
