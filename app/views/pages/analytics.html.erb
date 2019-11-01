@@ -7,7 +7,13 @@
         <% mission_name << mission.name.strip %>
       <% end %>
       <% total_mission = mission_name.reduce(Hash.new(0)) { |a, b| a[b] += 1; a } %>
-      <%= total_mission %>
+      <% total_mission.each do |key, value| %>
+        <% if key != "" %>
+          <ul>
+            <li><%= "#{key} --> #{value}" %></li>
+          </ul>
+        <% end %>
+      <% end %>
 
 <% reward_name = [] %>
     <h1>Liste des récompenses</h1>
@@ -15,8 +21,13 @@
         <% reward_name << reward.name.strip %>
       <% end %>
       <% total_reward = reward_name.reduce(Hash.new(0)) { |a, b| a[b] += 1; a } %>
-      <%= total_reward %>
+      <% total_reward.each do |key, value| %>
+        <% if key != "" %>
+          <ul>
+            <li><%= "#{key} --> #{value}" %></li>
+          </ul>
+        <% end %>
+      <% end %>
 
   <%= render 'shared/footer' %>
 </div>
-
