@@ -5,6 +5,7 @@ class PartnairsController < ApplicationController
     @reiv = Partnair.find_by_name("REIV")
     @urban_quest_bx = Partnair.find_by_name("Urban Quest Bordeaux")
     @escape_hunt_bx = Partnair.find_by_name("Escape Hunt Bordeaux")
+    @RC_mini_race = Partnair.find_by_name("RC mini race")
   end
 
   def show

@@ -65,3 +65,13 @@ Partnair.create!(
   website: "https://www.reiv.eu/",
   code: "widoureiv15"
 )
+
+Partnair.create!(
+  name: "RC mini race", 
+  description: "Sur les hauteurs de Bouliac, à 15 mn de Bordeaux centre, venez vivre une nouvelle expérience. Profitez d'un moment de détente en famille et partagez une course unique en son genre. 
+  Seul ou à plusieurs, installez-vous aux commandes d’une voiture de course miniature. Depuis votre cockpit, pilotez un mini bolide équipé d’une caméra HD sur un vrai circuit de plus de 120 m². 
+  Huit pilotes peuvent se confronter à toute vitesse sur une piste ou s’enchainent  courbes, virages en épingle et lignes droites. 
+  Les petits bolides évoluant sur le circuit assurent le spectacle pour les accompagnants dans un cadre unique et innovant.",
+  website: "https://rcmini.fr/",
+  code: ""
+)
